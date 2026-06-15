@@ -103,16 +103,19 @@
     <div class="modal-sheet">
       <button class="modal-close-btn" id="modal-close" aria-label="Close">×</button>
       <h2>Request Invitation</h2>
-      <p>Drop your email and we'll let you know when your invite is ready.</p>
+      <p>Enter your email — once you confirm we'll send you the password.</p>
 
       <!--
-        SWAP THIS FORM for your email platform embed code
-        (Mailchimp, ConvertKit, Beehiiv, Kit, etc.)
+        PASTE YOUR KIT FORM EMBED CODE BELOW.
+
+        In Kit, set the post-confirmation redirect to:
+        https://YOUR-SITE-URL/password.html
+
+        Then delete this comment and the placeholder div.
       -->
-      <form id="email-form">
-        <input type="email" placeholder="your@email.com" required />
-        <button type="submit">Send it ✨</button>
-      </form>
+      <div id="kit-form-embed">
+        <!-- Kit embed goes here -->
+      </div>
 
     </div>
   </div>

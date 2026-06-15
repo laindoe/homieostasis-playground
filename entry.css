@@ -217,6 +217,59 @@ body.entry-page {
   font-weight: 700;
 }
 
+/* ── Password reveal page ── */
+
+.password-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 24px 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  margin-top: 16px;
+}
+
+.password-label {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.password-value {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #4a0080;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.password-hint {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.tap-in-btn {
+  display: inline-block;
+  background: #d946a8;
+  color: #fff;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 11px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.tap-in-btn:hover {
+  background: #c0389a;
+}
+
 /* ── Email capture modal ── */
 
 #invite-modal {
@@ -240,9 +293,11 @@ body.entry-page {
   padding: 36px 24px 28px;
   width: 100%;
   max-width: 380px;
+  max-height: 85vh;
+  overflow-y: auto;
   position: relative;
   text-align: center;
-  font-family: 'Caveat', cursive;
+  font-family: 'Nunito', system-ui, sans-serif;
 }
 
 .modal-sheet h2 {

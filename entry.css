@@ -52,7 +52,7 @@ body.entry-page {
 /* ── Tagline ── */
 
 .tagline {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #111;
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
@@ -73,7 +73,7 @@ body.entry-page {
 }
 
 #entry-form-section h2 {
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #111;
   margin-bottom: 10px;
@@ -96,7 +96,7 @@ body.entry-page {
   border: none;
   outline: none;
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 500;
   background: transparent;
   color: #333;
@@ -114,7 +114,7 @@ body.entry-page {
   border: none;
   background: #d946a8;
   color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
   flex-shrink: 0;
@@ -132,7 +132,7 @@ body.entry-page {
   display: inline-block;
   margin-top: 8px;
   color: #c07820;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-decoration: underline;
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
@@ -146,7 +146,7 @@ body.entry-page {
 
 #while-you-wait h3 {
   text-align: center;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-weight: 600;
   font-style: italic;
   color: #111;
@@ -195,7 +195,7 @@ body.entry-page {
 .wait-card-text strong {
   display: block;
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #111;
   line-height: 1.2;
@@ -204,13 +204,13 @@ body.entry-page {
 .wait-card-text span {
   display: block;
   font-family: 'Nunito', system-ui, -apple-system, sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 500;
   color: #777;
 }
 
 .wait-card-arrow {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #bbb;
   flex-shrink: 0;
   font-family: system-ui, sans-serif;

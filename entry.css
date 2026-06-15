@@ -135,6 +135,7 @@ body.entry-page {
   font-size: 1.05rem;
   font-weight: 600;
   text-decoration: underline;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
 }
 
 /* ── While You Wait ── */

@@ -1,4 +1,4 @@
-const CACHE = 'homieostasis-v4';
+const CACHE = 'homieostasis-v5';
 
 const CORE = [
   '/',
@@ -8,7 +8,7 @@ const CORE = [
   '/styles.css',
   '/manifest.json',
   '/images/playground-entrance.png',
-  '/images/homieostasis-logo.jpg',
+  '/images/homieostasis-logo.png',
   '/images/energy_playground-bg.svg',
   '/images/homieostasis-intro.svg',
   '/images/lets-play.svg',

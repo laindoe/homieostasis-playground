@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.entry-page {
+  background: #72c8e8;
+  font-family: 'Caveat', cursive;
+  min-height: 100vh;
+}
+
+/* ── Page layout ── */
+
+#page-wrapper {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+#bg-art {
+  width: 100%;
+  display: block;
+}
+
+#entry-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 44px 22px 24px;
+  text-align: center;
+}
+
+/* ── Header ── */
+
+#entry-header {
+  margin-bottom: 14px;
+}
+
+.logo-title {
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.1;
+}
+
+.app-subtitle {
+  font-size: 1.1rem;
+  color: #111;
+  font-weight: 400;
+  margin: 2px 0 6px;
+}
+
+.tagline {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+}
+
+/* ── Divider ── */
+
+.rule {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 14px 0;
+}
+
+/* ── Invite code section ── */
+
+#entry-form-section {
+  margin-bottom: 18px;
+}
+
+#entry-form-section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.invite-input-row {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 50px;
+  padding: 5px 5px 5px 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+  gap: 6px;
+}
+
+#invite-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  background: transparent;
+  color: #333;
+}
+
+#invite-input::placeholder {
+  color: #bbb;
+}
+
+.invite-submit {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #d946a8;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.invite-submit:hover {
+  background: #c0389a;
+}
+
+#request-invite-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #c07820;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ── While You Wait ── */
+
+#while-you-wait {
+  text-align: left;
+}
+
+#while-you-wait h3 {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.wait-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.wait-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.wait-card-icon {
+  font-size: 1.7rem;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.wait-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.wait-card-text strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111;
+  font-family: 'Caveat', cursive;
+  line-height: 1.2;
+}
+
+.wait-card-text span {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  font-family: 'Caveat', cursive;
+}
+
+.wait-card-arrow {
+  font-size: 1.4rem;
+  color: #aaa;
+  flex-shrink: 0;
+}
+
+/* ── Email capture modal ── */
+
+#invite-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#invite-modal.open {
+  display: flex;
+}
+
+.modal-sheet {
+  background: #fff;
+  border-radius: 24px;
+  padding: 36px 24px 28px;
+  width: 100%;
+  max-width: 380px;
+  position: relative;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+}
+
+.modal-sheet h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.modal-sheet > p {
+  font-size: 1.05rem;
+  color: #666;
+  margin-bottom: 22px;
+  line-height: 1.4;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #bbb;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+#email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#email-form input[type="email"] {
+  border: 2px solid #e5e5e5;
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  outline: none;
+  color: #333;
+  transition: border-color 0.15s;
+}
+
+#email-form input[type="email"]:focus {
+  border-color: #d946a8;
+}
+
+#email-form button[type="submit"] {
+  background: #d946a8;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 13px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#email-form button[type="submit"]:hover {
+  background: #c0389a;
+}

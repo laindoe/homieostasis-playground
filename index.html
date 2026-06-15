@@ -3,312 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>homieOstasis energy playground</title>
+  <title>homieOstasis · Energy Playground</title>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#72c8e8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="homieOstasis" />
   <link rel="apple-touch-icon" href="images/icon-192.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" />
+  <link rel="stylesheet" href="entry.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" />
 </head>
-<body>
-  <div id="playground">
-    <img id="bg-image" src="images/energy_playground-bg.svg" alt="Energy Playground" />
-    <img id="treehouse" src="images/only-homies-treehouse.svg" alt="Only Homies Treehouse" onclick="document.getElementById('treehouse-modal').classList.add('open')" />
-    <!-- <img id="arcade" src="images/ascension-arcade.svg" alt="Ascension Arcade" onclick="document.getElementById('arcade-modal').classList.add('open')" /> -->
-    <img id="brain-bath" src="images/brain-bath.svg" alt="Brain Bath" onclick="document.getElementById('brain-bath-modal').classList.add('open')" />
-    <img id="imagination-box" src="images/imagination-box.svg" alt="Imagination Box" onclick="document.getElementById('imagination-box-modal').classList.add('open')" />
-    <img id="sound-bowls" src="images/sound-bowls.svg" alt="Sound Bowls" onclick="document.getElementById('sound-bowls-modal').classList.add('open')" />
-    <img id="store" src="images/store.svg" alt="Store" onclick="document.getElementById('store-modal').classList.add('open')" />
-    <img id="swing" src="images/swing.svg" alt="Swing" onclick="document.getElementById('swing-modal').classList.add('open')" />
-    <img id="garden-of-freedom" src="images/garden-of-freedom-rainbow.svg" alt="Garden of Freedom" onclick="document.getElementById('garden-of-freedom-modal').classList.add('open')" />
-    <img id="baba-bloom" src="images/baba-bloom.svg" alt="Baba Bloom" onclick="document.getElementById('baba-bloom-modal').classList.add('open')" />
-    <img id="slide" src="images/slide.svg" alt="Slide" onclick="document.getElementById('slide-modal').classList.add('open')" />
-    <img id="holy-heart" src="images/holy-heart.svg" alt="Holy Heart" onclick="document.getElementById('holy-heart-modal').classList.add('open')" />
-    <img id="heart-wheel" src="images/heart-wheel.svg" alt="Heart Wheel" onclick="document.getElementById('heart-wheel-modal').classList.add('open')" />
-    <img id="sacred-sandbox" src="images/sacred-sandbox.svg" alt="Sacred Sandbox" onclick="document.getElementById('sacred-sandbox-modal').classList.add('open')" />
-    <img id="blanket" src="images/blanket.svg" alt="Blanket" onclick="document.getElementById('blanket-modal').classList.add('open')" />
-    <img id="spotlight" src="images/spotlight.svg" alt="Spotlight" onclick="document.getElementById('spotlight-modal').classList.add('open')" />
-    <img id="bulletin-board" src="images/bullentin-board.svg" alt="Bulletin Board" onclick="document.getElementById('bulletin-board-modal').classList.add('open')" />
-    <img id="rug" src="images/rug.svg" alt="Rug" onclick="document.getElementById('rug-modal').classList.add('open')" />
-    <div id="overlay">
-      <img id="intro" src="images/homieostasis-intro.svg" alt="Intro" />
-      <a href="#bottom" id="lets-play-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">
-        <img src="images/lets-play.svg" alt="Let's Play" />
-      </a>
-    </div>
-  </div>
-  <div id="bottom"></div>
+<body class="entry-page">
 
-  <div id="swing-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('swing-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Back & Forth</h2>
-        <p>COMING SOON: As Holy Heart swings back and forth tap him right as he passes through the center to score points.
+  <div id="page-wrapper">
+    <img id="bg-art" src="images/playground-entrance.png" alt="homieOstasis Energy Playground" />
 
-Too early… you’re stuck in the past.
-Too late… you jumped too far into the future.
+    <div id="entry-content">
 
-Hit the middle and you’re right where you need to be, the present moment.
-Stay there as long as you can. </p>
-      </div>
-    </div>
-  </div>
+      <!-- Branding -->
+      <header id="entry-header">
+        <h1 class="logo-title">homie🌸stasis</h1>
+        <p class="app-subtitle">energy playground</p>
+        <p class="tagline">Find Yourself. Find Your Homies.</p>
+      </header>
 
-  <div id="store-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('store-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>homieOstasis spiritual goods</h2>
-        <p>Step inside our digital warehouse of tools and trinkets that will assist on your spiritual path.</p>
-        <ul>
-          <li><a href="https://homieostasis.com/" target="_blank">Visit our store</a></li>
-        </ul>
-      </div>
+      <hr class="rule" />
+
+      <!-- Invite code entry -->
+      <section id="entry-form-section">
+        <h2>What's the password?</h2>
+        <form id="invite-form">
+          <div class="invite-input-row">
+            <input id="invite-input" type="text" placeholder="Enter Invite Code" autocomplete="off" />
+            <button type="submit" class="invite-submit" aria-label="Submit">›</button>
+          </div>
+        </form>
+        <a href="#" id="request-invite-link">Request Invitation</a>
+      </section>
+
+      <!-- While You Wait -->
+      <section id="while-you-wait">
+        <h3>While You Wait...</h3>
+
+        <a href="playground.html" class="wait-card">
+          <div class="wait-card-icon">🗺️</div>
+          <div class="wait-card-text">
+            <strong>Explore the Playground</strong>
+            <span>View the map</span>
+          </div>
+          <div class="wait-card-arrow">›</div>
+        </a>
+
+        <a href="homies.html" class="wait-card">
+          <div class="wait-card-icon">🌸</div>
+          <div class="wait-card-text">
+            <strong>Meet the Healing Homies</strong>
+            <span>Get to know the crew</span>
+          </div>
+          <div class="wait-card-arrow">›</div>
+        </a>
+
+      </section>
     </div>
   </div>
 
-  <div id="garden-of-freedom-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('garden-of-freedom-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Garden of Freedom</h2>
-        <p>UNDER CONSTRUCTION: This is where the healing happens. Come to the Garden for group activities that help you get to the other side. 
-          <ul>
+  <!-- Email capture modal -->
+  <div id="invite-modal">
+    <div class="modal-sheet">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close">×</button>
+      <h2>Request Invitation</h2>
+      <p>Drop your email and we'll let you know when your invite is ready.</p>
 
-          <br> Join our Real Homies group chat to stay in the loop about our live playdates like Flower Hour and Wake, Bake, Meditate.</p>
+      <!--
+        SWAP THIS FORM for your email platform embed code
+        (Mailchimp, ConvertKit, Beehiiv, Kit, etc.)
+      -->
+      <form id="email-form">
+        <input type="email" placeholder="your@email.com" required />
+        <button type="submit">Send it ✨</button>
+      </form>
 
-          <li><a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a></li>
-        </ul>
-      </div>
     </div>
   </div>
 
-  <div id="baba-bloom-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('baba-bloom-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Meet Baba Root & Bloom</h2>
-        <p>Your Healing Homies, Baba Root and Bloom are your guides through the Garden of Freedom to find your true Self.</p>
-        <h3>Baba Root</h3>
-        <p>Expect to hear ancestral riddles and anecdotes that may not click right away. He gives you exactly what you need when you need it. He's nurturing and supportive while giving you the space to figure things out for yourself.</p>
-        <h3>Bloom</h3>
-        <p>Her whole name is Full Bloom but she has to make her way to the other side of the garden to live in her true purpose. For now she goes by Bloom as she navigates the garden alongside the other healing homies, Holy Heart and Spotlight who are her sidekicks on the way to freedom.</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="slide-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('slide-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Funemployed Slide</h2>
-        <p> If you wanna know which direction to slide for your funemployment, this reading is for you. We will explore your birth chart, human design and personal insights to determmine your most ideal route. </p>
-  <br>  
-        <a href="https://homieostasis.myshopify.com/products/funemployed-reading" target="_blank">Ride the Funemployed Slide</a>
-
-      </div>
-    </div>
-  </div>
-
-  <div id="holy-heart-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('holy-heart-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Meet Holy Heart</h2>
-        <p>Holy Heart is the playful pulse of the playground. He’s leads with Christ-like energy rooted in joy, peace, and pure love. He doesn’t get lost in chaos,  he always finds the meaning and magic in every moment. While he can be a bit of a trickster, and loves a good laugh, he reminds everyone not to take life so serious. Holy Heart keeps the energy lifted, the hearts open, and the vibes aligned. </p>
-      </div>
-    </div>
-  </div>
-
-  <div id="heart-wheel-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('heart-wheel-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Heart Wheel</h2>
-        <p>The Heart Wheel is a channeled oracle + tarot reading based on the sacred medicine wheel that brings clarity to your current energy, inner desires, and next aligned steps.</p>
-        <ul>
-          <li><a href="https://homieostasis.myshopify.com/products/heart-wheel" target="_blank">Spin the Heart Wheel</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="sacred-sandbox-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('sacred-sandbox-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Sacred Sandbox</h2>
-        <p>Okay this is where the party is at! Pull up to the Sacred Sandbox for Magic Music Playlists, and sets by Dj Starrseed.  </p>
-        <ul>
-          <li><a href="https://open.spotify.com/playlist/6pVHs6KcYYNp1FI1XYumpe?si=Cf9P0C_NRS6aW8y1XLFRUg" target="_blank">Love is in the Air - Spotify</a></li>
-          <li><a href="https://youtube.com/playlist?list=PLJnOzceGIceaoq4z9pOsuUhIu0K1iTwyL&si=uWYu21olYs-QW0-y" target="_blank">Love is in the Air - Youtube</a></li>
-<br> 
-
-          <p> Chat with your healing homies in real time. This is where we play and bond fr. </p> 
-          <li><a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a></li>
-          
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="blanket-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('blanket-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>The Mystic Mat</h2>
-        <p>Calling all my mystical homies! If you are into astrology and tarot this is where you'll wanna be. </p>
-       <ul>
-          <li><a href="https://discord.com/channels/941002168624885822/1421977119281385533" target="_blank">Live Games signup</a></li>
-<br> 
-
-<p> Chat with your healing homies in real time. This is where we play and bond fr. </p> 
-          <li><a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="spotlight-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('spotlight-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Meet Spotlight</h2>
-        <p>Spotlight is your sassy little sis who wants in every room like its hers...and won't stop talking about the stars. She knows when a planet is in retrograde and she can guess your sign without you saying a word. Spotlight knows her light is meant to be shared and she is here to help yours get brighter. </p>
-      </div>
-    </div>
-  </div>
-
-  <div id="bulletin-board-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('bulletin-board-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Bulletin Board</h2>
-        PLAYDATES:
-        <br> 
-Wake, Bake, Meditate on Sundays 11am EST - <a href="https://www.instagram.com/yourhomieostasis" target="_blank">JOIN</a> <br> <br> 
-Game Time on Wednesdays 7pm EST: What's Your Sign? - <a href="https://discord.com/channels/941002168624885822/1421977119281385533" target="_blank">JOIN</a> <br> <br> 
-Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibration Station. 
-
-<br> 
-<br> 
-          <p> Chat with your healing homies in real time. This is where we play and bond fr. </p> 
-          <a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a>
-
-      </div>
-    </div>
-  </div>
-
-  <div id="rug-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('rug-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Slow Down Circle</h2>
-        <p>This is a space for personal play. Enjoy frequency tones, and light activities like coloring pages and journal prompts.  </p>
-        <ul>
-          <li><a href="https://youtube.com/playlist?list=PLJnOzceGIcebdKe5ORVYX32beJ7YVP26u&si=bkBeB5p0SWg2gHNn" target="_blank">Slow Down playlist</a></li>
-          <li><a href="https://www.patreon.com/posts/coloring-pages-154501155?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link" target="_blank">Coloring pages</a></li>
-          <li><a href="https://www.patreon.com/posts/journal-prompts-154502734?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link" target="_blank">Journal prompts</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="sound-bowls-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('sound-bowls-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Vibration Station</h2>
-        <p>Enjoy the sounds of crystal bowls, gongs, drums, and affirmations, over the backdrop of Mother Nature's music. Hear the oceans waving, birds chirping, and frequencies rising. <br></p>
-        <ul>
-          <li><a href="https://youtube.com/playlist?list=PLJnOzceGIceYy-w20msEYzXFCtsXmDSF_&si=fK3U5CopkcTYJNvo" target="_blank">Ancestral Affirmations</a></li> <br>
-<br>
-           <br> Join the Real Homies group chat to stay in the loop on our sound ceremonies
-          <li><a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a></li>
-
-          </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="imagination-box-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('imagination-box-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Imagination Box</h2>
-        <p>Who needs TV when you have, IMMAAGGINATTIONNN? Step inside the box and step out as an expanded version of Self. Listen to guided visual meditations designed to unlock your Highest timeline.  </p>
-        <ul>
-          <li><a href="https://www.patreon.com/posts/imagination-box-154504371?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link" target="_blank">Destiny Land meditation</a></li>
-
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div id="brain-bath-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('brain-bath-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Brain Bath</h2>
-        <p>UNDER CONSTRUCTION: We are building a world of spiritual guidance and grounding tools. Enjoy a soothing visual meditation, pull out your journal, your herb, and maybe a box of tissue in case it gets real. Sign up for the Real Homies broadcast to stay in the loop.</p>
-       
-      </div>
-    </div>
-  </div>
-
-  <div id="arcade-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('arcade-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Ascension Arcade</h2>
-        <p>UNDER CONSTRUCTION: We are building a special place where you can train your intution, bond with your friends, and not feel guilty after playing for hours. Sign up for the Real Homies broadcast to stay in the loop. </p>
-        
-      </div>
-    </div>
-  </div>
-
-  <div id="treehouse-modal" class="modal">
-    <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('treehouse-modal').classList.remove('open')" />
-      <div class="modal-content">
-        <h2>Only Homies <br> Tree Temple</h2>
-        <p>This is an invite-only space for the real homies. Let's connect in the 3D and I might let you know the password. 😏 </p>
-        <ul>
-          <li><a href="http://instagram.com/laindoe" target="_blank">Instagram</a></li>
-          <li><a href="https://threads.com/laindoe" target="_blank">Threads</a></li>
-          <li><a href="https://www.tiktok.com/@laindoe" target="_blank">Tiktok</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js');
-      });
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
     }
+
+    // Invite code submit — redirect on any non-empty code for now
+    document.getElementById('invite-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const code = document.getElementById('invite-input').value.trim();
+      if (code) {
+        // TODO: validate code against allowed list before redirecting
+        window.location.href = 'playground.html';
+      }
+    });
+
+    // Modal controls
+    const modal = document.getElementById('invite-modal');
+
+    document.getElementById('request-invite-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.classList.add('open');
+    });
+
+    document.getElementById('modal-close').addEventListener('click', function () {
+      modal.classList.remove('open');
+    });
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+
+    // Email form submit — replace with real platform logic
+    document.getElementById('email-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      // TODO: POST to email platform API or use their embed form instead
+      modal.classList.remove('open');
+    });
   </script>
+
 </body>
 </html>

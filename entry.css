@@ -5,22 +5,30 @@
 }
 
 body.entry-page {
-  background: #72c8e8;
+  height: 100vh;
+  overflow: hidden;
+  background: #6ec8e8;
   font-family: 'Caveat', cursive;
-  min-height: 100vh;
 }
 
-/* ── Page layout ── */
+/* ── Page shell ── */
 
 #page-wrapper {
   position: relative;
+  height: 100vh;
   max-width: 420px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 #bg-art {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 0;
 }
 
 #entry-content {
@@ -28,32 +36,25 @@ body.entry-page {
   top: 0;
   left: 0;
   right: 0;
-  padding: 44px 22px 24px;
+  padding: 28px 20px 0;
+  z-index: 1;
   text-align: center;
 }
 
-/* ── Header ── */
+/* ── Logo ── */
 
-#entry-header {
-  margin-bottom: 14px;
+#brand-logo {
+  display: block;
+  width: 78%;
+  max-width: 290px;
+  margin: 0 auto 4px;
+  mix-blend-mode: multiply;
 }
 
-.logo-title {
-  font-size: 2.7rem;
-  font-weight: 700;
-  color: #111;
-  line-height: 1.1;
-}
-
-.app-subtitle {
-  font-size: 1.1rem;
-  color: #111;
-  font-weight: 400;
-  margin: 2px 0 6px;
-}
+/* ── Tagline ── */
 
 .tagline {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #111;
 }
@@ -62,21 +63,21 @@ body.entry-page {
 
 .rule {
   border: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  margin: 14px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+  margin: 12px 0;
 }
 
-/* ── Invite code section ── */
+/* ── Invite form section ── */
 
 #entry-form-section {
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 #entry-form-section h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #111;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .invite-input-row {
@@ -84,7 +85,7 @@ body.entry-page {
   align-items: center;
   background: #fff;
   border-radius: 50px;
-  padding: 5px 5px 5px 18px;
+  padding: 4px 4px 4px 18px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
   gap: 6px;
 }
@@ -105,13 +106,13 @@ body.entry-page {
 }
 
 .invite-submit {
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: none;
   background: #d946a8;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
   flex-shrink: 0;
@@ -127,9 +128,9 @@ body.entry-page {
 
 #request-invite-link {
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 8px;
   color: #c07820;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   text-decoration: underline;
 }
@@ -142,34 +143,33 @@ body.entry-page {
 
 #while-you-wait h3 {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 600;
   font-style: italic;
   color: #111;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .wait-card {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 16px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 14px;
+  padding: 11px 14px;
+  margin-bottom: 8px;
   text-decoration: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.1s, box-shadow 0.1s;
+  transition: transform 0.1s;
 }
 
 .wait-card:active {
   transform: scale(0.98);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .wait-card-icon {
-  font-size: 1.7rem;
-  width: 40px;
+  font-size: 1.5rem;
+  width: 36px;
   text-align: center;
   flex-shrink: 0;
 }
@@ -181,24 +181,26 @@ body.entry-page {
 
 .wait-card-text strong {
   display: block;
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
   color: #111;
-  font-family: 'Caveat', cursive;
   line-height: 1.2;
 }
 
 .wait-card-text span {
   display: block;
-  font-size: 0.9rem;
+  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
   color: #666;
-  font-family: 'Caveat', cursive;
 }
 
 .wait-card-arrow {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: #aaa;
   flex-shrink: 0;
+  font-family: system-ui, sans-serif;
 }
 
 /* ── Email capture modal ── */

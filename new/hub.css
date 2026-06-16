@@ -58,6 +58,39 @@
   box-shadow: 0 0 0 3px #d946a8, 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
+/* ── Top stat bar (Playground Map) ── */
+
+.hub-topbar {
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 0 14px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.hub-topbar .hub-points,
+.hub-topbar .hub-token {
+  pointer-events: auto;
+}
+
+.hub-token {
+  background: #fff;
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #2a8f6f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+
 /* ── Hub page layout (Prize Center, Home, Homies, Profile) ── */
 
 body.hub-page {

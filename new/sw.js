@@ -1,4 +1,4 @@
-const CACHE = 'homieostasis-v12';
+const CACHE = 'homieostasis-v13';
 
 const CORE = [
   '/new/',

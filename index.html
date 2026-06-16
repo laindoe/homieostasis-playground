@@ -102,10 +102,8 @@
   <div id="invite-modal">
     <div class="modal-sheet">
       <button class="modal-close-btn" id="modal-close" aria-label="Close">×</button>
-      <h2>Request Invitation</h2>
-      <p>Enter your email — once you confirm we'll send you the password.</p>
+      <img src="images/homieostasis-banner-app-email.png" class="modal-banner" alt="homieOstasis" />
 
-      
       <div id="kit-form-embed">
         
         <script async data-uid="6532025544" src="https://homieostasis.kit.com/6532025544/index.js"></script>
@@ -147,12 +145,6 @@
       if (e.target === modal) modal.classList.remove('open');
     });
 
-    // Email form submit — replace with real platform logic
-    document.getElementById('email-form').addEventListener('submit', function (e) {
-      e.preventDefault();
-      // TODO: POST to email platform API or use their embed form instead
-      modal.classList.remove('open');
-    });
   </script>
 
 </body>

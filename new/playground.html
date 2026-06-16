@@ -17,14 +17,15 @@
     #playground {
       padding-bottom: 90px;
     }
+    body { visibility: hidden; }
   </style>
 </head>
 <body>
   <div class="hub-topbar">
     <img class="hub-logo" src="/images/homieostasis-logo.png" alt="homieOstasis" />
     <div class="hub-topbar-stats">
-      <span class="hub-points">⭐ 0 pts</span>
-      <span class="hub-token">🎫 0 tokens</span>
+      <span class="hub-points" id="topbar-points">⭐ 0 pts</span>
+      <span class="hub-token" id="topbar-tokens">🎫 0 tokens</span>
     </div>
   </div>
   <div id="playground">
@@ -336,6 +337,14 @@ Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibra
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
     }
+  </script>
+
+  <script type="module">
+    import { requireAuth } from './auth.js';
+    requireAuth().then(({ profile }) => {
+      document.getElementById('topbar-points').textContent = `⭐ ${profile.points ?? 0} pts`;
+      document.body.style.visibility = 'visible';
+    });
   </script>
 </body>
 </html>

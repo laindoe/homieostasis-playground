@@ -12,24 +12,26 @@
   <link rel="apple-touch-icon" href="/images/icon-192.png" />
   <link rel="stylesheet" href="hub.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" />
+  <style>body { visibility: hidden; }</style>
 </head>
 <body class="hub-page">
   <div class="hub-wrapper">
 
     <div class="hub-header">
       <h1>Your Profile</h1>
-      <span class="hub-points">⭐ 0 pts</span>
+      <span class="hub-points" id="profile-points">⭐ 0 pts</span>
     </div>
 
     <div class="hub-card" style="text-align:center;">
       <img src="/images/homieostasis-intro.svg" alt="" style="width:72px; margin-bottom:10px;" />
-      <h2>Homie</h2>
-      <p>Sign-in and saved profiles are coming soon — for now this is a placeholder.</p>
+      <h2 id="profile-name" style="margin-bottom:4px;">Homie</h2>
+      <p id="profile-email" style="color:#aaa; font-size:0.88rem; margin:0 0 16px;"></p>
+      <button id="signout-btn" class="hub-btn" style="border:none; cursor:pointer; background:#f0f0f0; color:#888;">Sign Out</button>
     </div>
 
     <div class="hub-card-row">
       <div class="hub-card" style="text-align:center;">
-        <h2>0</h2>
+        <h2 id="profile-points-stat">0</h2>
         <p>Playground Points</p>
       </div>
       <div class="hub-card" style="text-align:center;">
@@ -66,6 +68,24 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
     }
+  </script>
+
+  <script type="module">
+    import { requireAuth, signOutAndRedirect } from './auth.js';
+
+    requireAuth().then(({ user, profile }) => {
+      const displayName = profile.displayName || user.displayName || user.email.split('@')[0];
+      const points = profile.points ?? 0;
+
+      document.getElementById('profile-name').textContent = displayName;
+      document.getElementById('profile-email').textContent = user.email;
+      document.getElementById('profile-points').textContent = `⭐ ${points} pts`;
+      document.getElementById('profile-points-stat').textContent = points;
+
+      document.body.style.visibility = 'visible';
+    });
+
+    document.getElementById('signout-btn').addEventListener('click', signOutAndRedirect);
   </script>
 </body>
 </html>

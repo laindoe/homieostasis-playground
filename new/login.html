@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Sign In · homieOstasis</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#eaf6ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="homieOstasis" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" />
+</head>
+<body class="login-page">
+
+  <div class="login-container">
+
+    <img src="/images/homieostasis-logo.png" alt="homieOstasis" class="login-logo" />
+
+    <div class="login-card">
+      <h1 class="login-title">Welcome, Homie 🌻</h1>
+
+      <div class="login-tabs" role="tablist">
+        <button class="login-tab active" id="tab-signin" role="tab" aria-selected="true">Sign In</button>
+        <button class="login-tab" id="tab-signup" role="tab" aria-selected="false">Create Account</button>
+      </div>
+
+      <form id="login-form" novalidate>
+
+        <div class="login-field" id="field-name" style="display:none">
+          <label for="input-name">Your Name</label>
+          <input id="input-name" type="text" class="login-input" placeholder="Homie McHomie" autocomplete="name" />
+        </div>
+
+        <div class="login-field">
+          <label for="input-email">Email</label>
+          <input id="input-email" type="email" class="login-input" placeholder="you@example.com" autocomplete="email" required />
+        </div>
+
+        <div class="login-field">
+          <label for="input-password">Password</label>
+          <input id="input-password" type="password" class="login-input" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+
+        <p id="login-error" class="login-error" aria-live="polite"></p>
+
+        <button type="submit" class="login-btn" id="submit-btn">Sign In</button>
+      </form>
+
+      <a href="#" id="forgot-link" class="login-forgot">Forgot your password?</a>
+    </div>
+
+    <p class="login-footer">A judgment-free zone, always ✨</p>
+
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
+
+  <script type="module">
+    import { auth } from './firebase-config.js';
+    import {
+      onAuthStateChanged,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+      updateProfile,
+      sendPasswordResetEmail
+    } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js';
+    import { ensureUserProfile } from './auth.js';
+
+    // Already logged in → go straight to playground
+    onAuthStateChanged(auth, user => {
+      if (user) window.location.replace('playground.html');
+    });
+
+    let isSignUp = false;
+
+    document.getElementById('tab-signin').addEventListener('click', () => {
+      isSignUp = false;
+      document.getElementById('tab-signin').classList.add('active');
+      document.getElementById('tab-signup').classList.remove('active');
+      document.getElementById('field-name').style.display = 'none';
+      document.getElementById('submit-btn').textContent = 'Sign In';
+      document.getElementById('input-password').setAttribute('autocomplete', 'current-password');
+      clearMsg();
+    });
+
+    document.getElementById('tab-signup').addEventListener('click', () => {
+      isSignUp = true;
+      document.getElementById('tab-signup').classList.add('active');
+      document.getElementById('tab-signin').classList.remove('active');
+      document.getElementById('field-name').style.display = 'block';
+      document.getElementById('submit-btn').textContent = 'Create Account';
+      document.getElementById('input-password').setAttribute('autocomplete', 'new-password');
+      clearMsg();
+    });
+
+    document.getElementById('login-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      clearMsg();
+
+      const email    = document.getElementById('input-email').value.trim();
+      const password = document.getElementById('input-password').value;
+      const name     = document.getElementById('input-name').value.trim();
+
+      if (!email || !password) { showMsg('Please fill in your email and password.'); return; }
+      if (isSignUp && password.length < 6) { showMsg('Password must be at least 6 characters.'); return; }
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = isSignUp ? 'Creating account…' : 'Signing in…';
+
+      try {
+        let cred;
+        if (isSignUp) {
+          cred = await createUserWithEmailAndPassword(auth, email, password);
+          if (name) await updateProfile(cred.user, { displayName: name });
+        } else {
+          cred = await signInWithEmailAndPassword(auth, email, password);
+        }
+        await ensureUserProfile(cred.user);
+        window.location.replace('playground.html');
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = isSignUp ? 'Create Account' : 'Sign In';
+        showMsg(friendlyError(err.code));
+      }
+    });
+
+    document.getElementById('forgot-link').addEventListener('click', async e => {
+      e.preventDefault();
+      const email = document.getElementById('input-email').value.trim();
+      if (!email) { showMsg('Enter your email above first.'); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showMsg('Reset email sent — check your inbox!', 'success');
+      } catch (err) {
+        showMsg(friendlyError(err.code));
+      }
+    });
+
+    function showMsg(msg, type = 'error') {
+      const el = document.getElementById('login-error');
+      el.textContent = msg;
+      el.className = 'login-error' + (type === 'success' ? ' login-success' : '');
+    }
+
+    function clearMsg() {
+      const el = document.getElementById('login-error');
+      el.textContent = '';
+      el.className = 'login-error';
+    }
+
+    function friendlyError(code) {
+      const map = {
+        'auth/invalid-email':          "That email doesn't look right.",
+        'auth/user-not-found':         "No account found with that email.",
+        'auth/wrong-password':         "Wrong password — try again.",
+        'auth/invalid-credential':     "Email or password is incorrect.",
+        'auth/email-already-in-use':   "An account with that email already exists.",
+        'auth/weak-password':          "Password needs to be at least 6 characters.",
+        'auth/too-many-requests':      "Too many attempts. Try again in a bit.",
+        'auth/network-request-failed': "Network error — check your connection.",
+      };
+      return map[code] || 'Something went wrong. Try again.';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,6 +1,10 @@
-const CACHE = 'homieostasis-v17';
+const CACHE = 'homieostasis-v18';
 
 const CORE = [
+  '/new/login.html',
+  '/new/login.css',
+  '/new/firebase-config.js',
+  '/new/auth.js',
   '/new/playground.html',
   '/new/hub.css',
   '/new/prize-center.html',

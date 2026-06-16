@@ -295,9 +295,61 @@ body.entry-page {
   max-width: 380px;
   max-height: 85vh;
   overflow-y: auto;
+  overflow-x: hidden;
   position: relative;
   text-align: center;
   font-family: 'Nunito', system-ui, sans-serif;
+}
+
+/* ── Kit embed — force single-column mobile layout ── */
+
+#kit-form-embed {
+  width: 100%;
+  overflow: hidden;
+}
+
+#kit-form-embed > div,
+#kit-form-embed form,
+#kit-form-embed .formkit-form {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* Hide the decorative image column Kit injects */
+#kit-form-embed .formkit-column:first-child,
+#kit-form-embed [data-element="column"]:first-child,
+#kit-form-embed .seva-fields ~ div[style*="background-image"],
+#kit-form-embed .formkit-background {
+  display: none !important;
+}
+
+/* Make the form column take full width */
+#kit-form-embed .formkit-column:last-child,
+#kit-form-embed [data-element="column"]:last-child {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Force any flex/grid row to stack */
+#kit-form-embed .formkit-row,
+#kit-form-embed [data-element="row"] {
+  flex-direction: column !important;
+  display: block !important;
+}
+
+/* Inputs fill width */
+#kit-form-embed input {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Submit button fills width */
+#kit-form-embed .formkit-submit,
+#kit-form-embed button[type="submit"] {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .modal-sheet h2 {

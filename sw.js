@@ -1,4 +1,4 @@
-const CACHE = 'homieostasis-v7';
+const CACHE = 'homieostasis-v8';
 
 const CORE = [
   '/',
@@ -17,6 +17,7 @@ const CORE = [
   '/images/modal-x.svg',
   '/images/icon-192.png',
   '/images/icon-512.png',
+  '/images/funemployed-banner.png',
 ];
 
 self.addEventListener('install', event => {

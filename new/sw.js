@@ -1,4 +1,4 @@
-const CACHE = 'homieostasis-v11';
+const CACHE = 'homieostasis-v12';
 
 const CORE = [
   '/new/',
@@ -8,6 +8,11 @@ const CORE = [
   '/new/entry.css',
   '/new/playground.html',
   '/new/password.html',
+  '/new/hub.css',
+  '/new/prize-center.html',
+  '/new/home.html',
+  '/new/homies.html',
+  '/new/profile.html',
   '/styles.css',
   '/new/manifest.json',
   '/images/playground-entrance.png',

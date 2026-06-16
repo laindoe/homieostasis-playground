@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>homieOstasis · Profile</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#eaf6ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="homieOstasis" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="stylesheet" href="hub.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" />
+</head>
+<body class="hub-page">
+  <div class="hub-wrapper">
+
+    <div class="hub-header">
+      <h1>Your Profile</h1>
+      <span class="hub-points">⭐ 0 pts</span>
+    </div>
+
+    <div class="hub-card" style="text-align:center;">
+      <img src="/images/homieostasis-intro.svg" alt="" style="width:72px; margin-bottom:10px;" />
+      <h2>Homie</h2>
+      <p>Sign-in and saved profiles are coming soon — for now this is a placeholder.</p>
+    </div>
+
+    <div class="hub-card-row">
+      <div class="hub-card" style="text-align:center;">
+        <h2>0</h2>
+        <p>Playground Points</p>
+      </div>
+      <div class="hub-card" style="text-align:center;">
+        <h2>0</h2>
+        <p>Badges</p>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="hub-nav">
+    <a href="playground.html" class="hub-nav-item">
+      <span class="hub-nav-icon">🗺️</span>
+      <span>Map</span>
+    </a>
+    <a href="prize-center.html" class="hub-nav-item">
+      <span class="hub-nav-icon">🏆</span>
+      <span>Prize Center</span>
+    </a>
+    <a href="home.html" class="hub-nav-item hub-nav-center">
+      <span class="hub-nav-icon">🌻</span>
+    </a>
+    <a href="homies.html" class="hub-nav-item">
+      <span class="hub-nav-icon">🤝</span>
+      <span>Homies</span>
+    </a>
+    <a href="profile.html" class="hub-nav-item active">
+      <span class="hub-nav-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
+</body>
+</html>

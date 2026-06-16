@@ -1,8 +1,10 @@
-const CACHE = 'homieostasis-v10';
+const CACHE = 'homieostasis-v11';
 
 const CORE = [
   '/',
   '/index.html',
+  '/landing.css',
+  '/enter.html',
   '/entry.css',
   '/playground.html',
   '/password.html',
@@ -19,6 +21,9 @@ const CORE = [
   '/images/icon-512.png',
   '/images/funemployed-banner.png',
   '/images/homieostasis-banner-app-email.png',
+  '/images/holy-heart.svg',
+  '/images/spotlight.svg',
+  '/images/baba-bloom.svg',
 ];
 
 self.addEventListener('install', event => {

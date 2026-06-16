@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>What's the Password? · homieOstasis</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#72c8e8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="homieOstasis" />
+  <link rel="apple-touch-icon" href="images/icon-192.png" />
+  <link rel="stylesheet" href="entry.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:wght@700;800&display=swap" />
+</head>
+<body class="entry-page">
+
+  <div id="page-wrapper">
+    <img id="bg-art" src="images/playground-entrance.png" alt="homieOstasis Energy Playground" />
+
+    <div id="entry-content">
+
+      <!-- Branding -->
+      <header id="entry-header">
+        <img id="brand-logo" src="images/homieostasis-logo.png" alt="homieOstasis energy playground" />
+        <p class="tagline">Find Yourself. Find Your Homies.</p>
+      </header>
+
+      <hr class="rule" />
+
+      <!-- Invite code entry -->
+      <section id="entry-form-section">
+        <h2>What's the password?</h2>
+        <form id="invite-form">
+          <div class="invite-input-row">
+            <input id="invite-input" type="text" placeholder="Enter Invite Code" autocomplete="off" />
+            <button type="submit" class="invite-submit" aria-label="Submit">›</button>
+          </div>
+        </form>
+        <a href="#" id="request-invite-link">Request Invitation</a>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Email capture modal -->
+  <div id="invite-modal">
+    <div class="modal-sheet">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close">×</button>
+      <img src="images/homieostasis-banner-app-email.png" class="modal-banner" alt="homieOstasis" />
+
+      <div id="kit-form-embed">
+
+        <script async data-uid="6532025544" src="https://homieostasis.kit.com/6532025544/index.js"></script>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+
+    // Invite code submit — redirect on any non-empty code for now
+    document.getElementById('invite-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const code = document.getElementById('invite-input').value.trim();
+      if (code) {
+        // TODO: validate code against allowed list before redirecting
+        window.location.href = 'playground.html';
+      }
+    });
+
+    // Modal controls
+    const modal = document.getElementById('invite-modal');
+
+    document.getElementById('request-invite-link').addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.classList.add('open');
+    });
+
+    document.getElementById('modal-close').addEventListener('click', function () {
+      modal.classList.remove('open');
+    });
+
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>

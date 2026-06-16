@@ -68,16 +68,27 @@
   width: 100%;
   max-width: 480px;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
   padding: 0 14px;
   z-index: 60;
   pointer-events: none;
 }
 
+.hub-logo,
 .hub-topbar .hub-points,
 .hub-topbar .hub-token {
   pointer-events: auto;
+}
+
+.hub-logo {
+  height: 32px;
+}
+
+.hub-topbar-stats {
+  display: flex;
+  gap: 8px;
 }
 
 .hub-token {

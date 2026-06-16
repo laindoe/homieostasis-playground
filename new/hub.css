@@ -69,7 +69,7 @@
   max-width: 480px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 8px;
   padding: 0 14px;
   z-index: 60;
@@ -83,6 +83,9 @@
 }
 
 .hub-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   height: 32px;
 }
 

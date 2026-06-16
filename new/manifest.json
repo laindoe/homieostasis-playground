@@ -2,7 +2,7 @@
   "name": "homieOstasis Energy Playground",
   "short_name": "homieOstasis",
   "description": "An interactive spiritual playground where healing meets play.",
-  "start_url": ".",
+  "start_url": "./playground.html",
   "display": "standalone",
   "background_color": "#72c8e8",
   "theme_color": "#72c8e8",

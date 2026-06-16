@@ -1,13 +1,7 @@
-const CACHE = 'homieostasis-v16';
+const CACHE = 'homieostasis-v17';
 
 const CORE = [
-  '/new/',
-  '/new/index.html',
-  '/new/landing.css',
-  '/new/enter.html',
-  '/new/entry.css',
   '/new/playground.html',
-  '/new/password.html',
   '/new/hub.css',
   '/new/prize-center.html',
   '/new/home.html',
@@ -24,8 +18,6 @@ const CORE = [
   '/images/modal-x.svg',
   '/images/icon-192.png',
   '/images/icon-512.png',
-  '/images/funemployed-banner.png',
-  '/images/homieostasis-banner-app-email.png',
   '/images/holy-heart.svg',
   '/images/spotlight.svg',
   '/images/baba-bloom.svg',

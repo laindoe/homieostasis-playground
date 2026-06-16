@@ -3,34 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>homieOstasis energy playground</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>homieOstasis · Playground Map</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="homieOstasis" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="stylesheet" href="/styles.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap" />
+  <style>
+    .back-home {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 50px;
+      backdrop-filter: blur(4px);
+    }
+  </style>
 </head>
 <body>
+  <a href="index.html" class="back-home">← Home</a>
+
   <div id="playground">
-    <img id="bg-image" src="images/energy_playground-bg.svg" alt="Energy Playground" />
-    <img id="treehouse" src="images/only-homies-treehouse.svg" alt="Only Homies Treehouse" onclick="document.getElementById('treehouse-modal').classList.add('open')" />
-    <!-- <img id="arcade" src="images/ascension-arcade.svg" alt="Ascension Arcade" onclick="document.getElementById('arcade-modal').classList.add('open')" /> -->
-    <img id="brain-bath" src="images/brain-bath.svg" alt="Brain Bath" onclick="document.getElementById('brain-bath-modal').classList.add('open')" />
-    <img id="imagination-box" src="images/imagination-box.svg" alt="Imagination Box" onclick="document.getElementById('imagination-box-modal').classList.add('open')" />
-    <img id="sound-bowls" src="images/sound-bowls.svg" alt="Sound Bowls" onclick="document.getElementById('sound-bowls-modal').classList.add('open')" />
-    <img id="store" src="images/store.svg" alt="Store" onclick="document.getElementById('store-modal').classList.add('open')" />
-    <img id="swing" src="images/swing.svg" alt="Swing" onclick="document.getElementById('swing-modal').classList.add('open')" />
-    <img id="garden-of-freedom" src="images/garden-of-freedom-rainbow.svg" alt="Garden of Freedom" onclick="document.getElementById('garden-of-freedom-modal').classList.add('open')" />
-    <img id="baba-bloom" src="images/baba-bloom.svg" alt="Baba Bloom" onclick="document.getElementById('baba-bloom-modal').classList.add('open')" />
-    <img id="slide" src="images/slide.svg" alt="Slide" onclick="document.getElementById('slide-modal').classList.add('open')" />
-    <img id="holy-heart" src="images/holy-heart.svg" alt="Holy Heart" onclick="document.getElementById('holy-heart-modal').classList.add('open')" />
-    <img id="heart-wheel" src="images/heart-wheel.svg" alt="Heart Wheel" onclick="document.getElementById('heart-wheel-modal').classList.add('open')" />
-    <img id="sacred-sandbox" src="images/sacred-sandbox.svg" alt="Sacred Sandbox" onclick="document.getElementById('sacred-sandbox-modal').classList.add('open')" />
-    <img id="blanket" src="images/blanket.svg" alt="Blanket" onclick="document.getElementById('blanket-modal').classList.add('open')" />
-    <img id="spotlight" src="images/spotlight.svg" alt="Spotlight" onclick="document.getElementById('spotlight-modal').classList.add('open')" />
-    <img id="bulletin-board" src="images/bullentin-board.svg" alt="Bulletin Board" onclick="document.getElementById('bulletin-board-modal').classList.add('open')" />
-    <img id="rug" src="images/rug.svg" alt="Rug" onclick="document.getElementById('rug-modal').classList.add('open')" />
+    <img id="bg-image" src="/images/energy_playground-bg.svg" alt="Energy Playground" />
+    <img id="treehouse" src="/images/only-homies-treehouse.svg" alt="Only Homies Treehouse" onclick="document.getElementById('treehouse-modal').classList.add('open')" />
+    <!-- <img id="arcade" src="/images/ascension-arcade.svg" alt="Ascension Arcade" onclick="document.getElementById('arcade-modal').classList.add('open')" /> -->
+    <img id="brain-bath" src="/images/brain-bath.svg" alt="Brain Bath" onclick="document.getElementById('brain-bath-modal').classList.add('open')" />
+    <img id="imagination-box" src="/images/imagination-box.svg" alt="Imagination Box" onclick="document.getElementById('imagination-box-modal').classList.add('open')" />
+    <img id="sound-bowls" src="/images/sound-bowls.svg" alt="Sound Bowls" onclick="document.getElementById('sound-bowls-modal').classList.add('open')" />
+    <img id="store" src="/images/store.svg" alt="Store" onclick="document.getElementById('store-modal').classList.add('open')" />
+    <img id="swing" src="/images/swing.svg" alt="Swing" onclick="document.getElementById('swing-modal').classList.add('open')" />
+    <img id="garden-of-freedom" src="/images/garden-of-freedom-rainbow.svg" alt="Garden of Freedom" onclick="document.getElementById('garden-of-freedom-modal').classList.add('open')" />
+    <img id="baba-bloom" src="/images/baba-bloom.svg" alt="Baba Bloom" onclick="document.getElementById('baba-bloom-modal').classList.add('open')" />
+    <img id="slide" src="/images/slide.svg" alt="Slide" onclick="document.getElementById('slide-modal').classList.add('open')" />
+    <img id="holy-heart" src="/images/holy-heart.svg" alt="Holy Heart" onclick="document.getElementById('holy-heart-modal').classList.add('open')" />
+    <img id="heart-wheel" src="/images/heart-wheel.svg" alt="Heart Wheel" onclick="document.getElementById('heart-wheel-modal').classList.add('open')" />
+    <img id="sacred-sandbox" src="/images/sacred-sandbox.svg" alt="Sacred Sandbox" onclick="document.getElementById('sacred-sandbox-modal').classList.add('open')" />
+    <img id="blanket" src="/images/blanket.svg" alt="Blanket" onclick="document.getElementById('blanket-modal').classList.add('open')" />
+    <img id="spotlight" src="/images/spotlight.svg" alt="Spotlight" onclick="document.getElementById('spotlight-modal').classList.add('open')" />
+    <img id="bulletin-board" src="/images/bullentin-board.svg" alt="Bulletin Board" onclick="document.getElementById('bulletin-board-modal').classList.add('open')" />
+    <img id="rug" src="/images/rug.svg" alt="Rug" onclick="document.getElementById('rug-modal').classList.add('open')" />
     <div id="overlay">
-      <img id="intro" src="images/homieostasis-intro.svg" alt="Intro" />
+      <img id="intro" src="/images/homieostasis-intro.svg" alt="Intro" />
       <a href="#bottom" id="lets-play-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'}); return false;">
-        <img src="images/lets-play.svg" alt="Let's Play" />
+        <img src="/images/lets-play.svg" alt="Let's Play" />
       </a>
     </div>
   </div>
@@ -38,16 +63,16 @@
 
   <div id="swing-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('swing-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('swing-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Back & Forth</h2>
         <p>COMING SOON: As Holy Heart swings back and forth tap him right as he passes through the center to score points.
 
-Too early… you’re stuck in the past.
+Too early… you're stuck in the past.
 Too late… you jumped too far into the future.
 
-Hit the middle and you’re right where you need to be, the present moment.
+Hit the middle and you're right where you need to be, the present moment.
 Stay there as long as you can. </p>
       </div>
     </div>
@@ -55,8 +80,8 @@ Stay there as long as you can. </p>
 
   <div id="store-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('store-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('store-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>homieOstasis spiritual goods</h2>
         <p>Step inside our digital warehouse of tools and trinkets that will assist on your spiritual path.</p>
@@ -69,11 +94,11 @@ Stay there as long as you can. </p>
 
   <div id="garden-of-freedom-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('garden-of-freedom-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('garden-of-freedom-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Garden of Freedom</h2>
-        <p>UNDER CONSTRUCTION: This is where the healing happens. Come to the Garden for group activities that help you get to the other side. 
+        <p>UNDER CONSTRUCTION: This is where the healing happens. Come to the Garden for group activities that help you get to the other side.
           <ul>
 
           <br> Join our Real Homies group chat to stay in the loop about our live playdates like Flower Hour and Wake, Bake, Meditate.</p>
@@ -86,8 +111,8 @@ Stay there as long as you can. </p>
 
   <div id="baba-bloom-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('baba-bloom-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('baba-bloom-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Meet Baba Root & Bloom</h2>
         <p>Your Healing Homies, Baba Root and Bloom are your guides through the Garden of Freedom to find your true Self.</p>
@@ -101,12 +126,12 @@ Stay there as long as you can. </p>
 
   <div id="slide-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('slide-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('slide-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Funemployed Slide</h2>
         <p> If you wanna know which direction to slide for your funemployment, this reading is for you. We will explore your birth chart, human design and personal insights to determmine your most ideal route. </p>
-  <br>  
+  <br>
         <a href="https://homieostasis.myshopify.com/products/funemployed-reading" target="_blank">Ride the Funemployed Slide</a>
 
       </div>
@@ -115,19 +140,19 @@ Stay there as long as you can. </p>
 
   <div id="holy-heart-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('holy-heart-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('holy-heart-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Meet Holy Heart</h2>
-        <p>Holy Heart is the playful pulse of the playground. He’s leads with Christ-like energy rooted in joy, peace, and pure love. He doesn’t get lost in chaos,  he always finds the meaning and magic in every moment. While he can be a bit of a trickster, and loves a good laugh, he reminds everyone not to take life so serious. Holy Heart keeps the energy lifted, the hearts open, and the vibes aligned. </p>
+        <p>Holy Heart is the playful pulse of the playground. He's leads with Christ-like energy rooted in joy, peace, and pure love. He doesn't get lost in chaos,  he always finds the meaning and magic in every moment. While he can be a bit of a trickster, and loves a good laugh, he reminds everyone not to take life so serious. Holy Heart keeps the energy lifted, the hearts open, and the vibes aligned. </p>
       </div>
     </div>
   </div>
 
   <div id="heart-wheel-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('heart-wheel-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('heart-wheel-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Heart Wheel</h2>
         <p>The Heart Wheel is a channeled oracle + tarot reading based on the sacred medicine wheel that brings clarity to your current energy, inner desires, and next aligned steps.</p>
@@ -140,19 +165,19 @@ Stay there as long as you can. </p>
 
   <div id="sacred-sandbox-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('sacred-sandbox-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('sacred-sandbox-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Sacred Sandbox</h2>
         <p>Okay this is where the party is at! Pull up to the Sacred Sandbox for Magic Music Playlists, and sets by Dj Starrseed.  </p>
         <ul>
           <li><a href="https://open.spotify.com/playlist/6pVHs6KcYYNp1FI1XYumpe?si=Cf9P0C_NRS6aW8y1XLFRUg" target="_blank">Love is in the Air - Spotify</a></li>
           <li><a href="https://youtube.com/playlist?list=PLJnOzceGIceaoq4z9pOsuUhIu0K1iTwyL&si=uWYu21olYs-QW0-y" target="_blank">Love is in the Air - Youtube</a></li>
-<br> 
+<br>
 
-          <p> Chat with your healing homies in real time. This is where we play and bond fr. </p> 
+          <p> Chat with your healing homies in real time. This is where we play and bond fr. </p>
           <li><a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a></li>
-          
+
         </ul>
       </div>
     </div>
@@ -160,16 +185,16 @@ Stay there as long as you can. </p>
 
   <div id="blanket-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('blanket-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('blanket-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>The Mystic Mat</h2>
         <p>Calling all my mystical homies! If you are into astrology and tarot this is where you'll wanna be. </p>
        <ul>
           <li><a href="https://discord.com/channels/941002168624885822/1421977119281385533" target="_blank">Live Games signup</a></li>
-<br> 
+<br>
 
-<p> Chat with your healing homies in real time. This is where we play and bond fr. </p> 
+<p> Chat with your healing homies in real time. This is where we play and bond fr. </p>
           <li><a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a></li>
 
         </ul>
@@ -179,8 +204,8 @@ Stay there as long as you can. </p>
 
   <div id="spotlight-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('spotlight-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('spotlight-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Meet Spotlight</h2>
         <p>Spotlight is your sassy little sis who wants in every room like its hers...and won't stop talking about the stars. She knows when a planet is in retrograde and she can guess your sign without you saying a word. Spotlight knows her light is meant to be shared and she is here to help yours get brighter. </p>
@@ -190,19 +215,19 @@ Stay there as long as you can. </p>
 
   <div id="bulletin-board-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('bulletin-board-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('bulletin-board-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Bulletin Board</h2>
         PLAYDATES:
-        <br> 
-Wake, Bake, Meditate on Sundays 11am EST - <a href="https://www.instagram.com/yourhomieostasis" target="_blank">JOIN</a> <br> <br> 
-Game Time on Wednesdays 7pm EST: What's Your Sign? - <a href="https://discord.com/channels/941002168624885822/1421977119281385533" target="_blank">JOIN</a> <br> <br> 
-Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibration Station. 
+        <br>
+Wake, Bake, Meditate on Sundays 11am EST - <a href="https://www.instagram.com/yourhomieostasis" target="_blank">JOIN</a> <br> <br>
+Game Time on Wednesdays 7pm EST: What's Your Sign? - <a href="https://discord.com/channels/941002168624885822/1421977119281385533" target="_blank">JOIN</a> <br> <br>
+Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibration Station.
 
-<br> 
-<br> 
-          <p> Chat with your healing homies in real time. This is where we play and bond fr. </p> 
+<br>
+<br>
+          <p> Chat with your healing homies in real time. This is where we play and bond fr. </p>
           <a href="https://discord.gg/uDApQrc8kq" target="_blank">Join the Discord</a>
 
       </div>
@@ -211,8 +236,8 @@ Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibra
 
   <div id="rug-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('rug-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('rug-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Slow Down Circle</h2>
         <p>This is a space for personal play. Enjoy frequency tones, and light activities like coloring pages and journal prompts.  </p>
@@ -227,8 +252,8 @@ Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibra
 
   <div id="sound-bowls-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('sound-bowls-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('sound-bowls-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Vibration Station</h2>
         <p>Enjoy the sounds of crystal bowls, gongs, drums, and affirmations, over the backdrop of Mother Nature's music. Hear the oceans waving, birds chirping, and frequencies rising. <br></p>
@@ -245,8 +270,8 @@ Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibra
 
   <div id="imagination-box-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('imagination-box-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('imagination-box-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Imagination Box</h2>
         <p>Who needs TV when you have, IMMAAGGINATTIONNN? Step inside the box and step out as an expanded version of Self. Listen to guided visual meditations designed to unlock your Highest timeline.  </p>
@@ -260,32 +285,32 @@ Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibra
 
   <div id="brain-bath-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('brain-bath-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('brain-bath-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Brain Bath</h2>
         <p>UNDER CONSTRUCTION: We are building a world of spiritual guidance and grounding tools. Enjoy a soothing visual meditation, pull out your journal, your herb, and maybe a box of tissue in case it gets real. Sign up for the Real Homies broadcast to stay in the loop.</p>
-       
+
       </div>
     </div>
   </div>
 
   <div id="arcade-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('arcade-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('arcade-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Ascension Arcade</h2>
         <p>UNDER CONSTRUCTION: We are building a special place where you can train your intution, bond with your friends, and not feel guilty after playing for hours. Sign up for the Real Homies broadcast to stay in the loop. </p>
-        
+
       </div>
     </div>
   </div>
 
   <div id="treehouse-modal" class="modal">
     <div class="modal-page">
-      <img class="modal-notebook" src="images/modal-notebook.svg" alt="" />
-      <img class="modal-close" src="images/modal-x.svg" alt="Close" onclick="document.getElementById('treehouse-modal').classList.remove('open')" />
+      <img class="modal-notebook" src="/images/modal-notebook.svg" alt="" />
+      <img class="modal-close" src="/images/modal-x.svg" alt="Close" onclick="document.getElementById('treehouse-modal').classList.remove('open')" />
       <div class="modal-content">
         <h2>Only Homies <br> Tree Temple</h2>
         <p>This is an invite-only space for the real homies. Let's connect in the 3D and I might let you know the password. 😏 </p>
@@ -298,6 +323,10 @@ Explore the other play areas like Slow Down Circle, Funemployed Slide, and Vibra
     </div>
   </div>
 
-  <a href="/new/" title="psst" style="position:fixed;bottom:8px;right:10px;font-size:14px;color:rgba(255,255,255,0.35);text-decoration:none;z-index:9999;">✦</a>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+    }
+  </script>
 </body>
 </html>

@@ -25,8 +25,20 @@ export function requireAuth() {
       if (!user) {
         window.location.replace('login.html');
       } else {
-        const profile = await ensureUserProfile(user);
-        resolve({ user, profile });
+        try {
+          const profile = await ensureUserProfile(user);
+          resolve({ user, profile });
+        } catch (err) {
+          // Firestore unavailable — show the page with defaults so it doesn't blank out
+          console.warn('Firestore profile error:', err);
+          resolve({
+            user,
+            profile: {
+              displayName: user.displayName || user.email?.split('@')[0],
+              points: 0,
+            }
+          });
+        }
       }
     });
   });

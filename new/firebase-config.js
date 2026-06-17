@@ -3,12 +3,12 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-aut
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js';
 
 const firebaseConfig = {
-  apiKey: "REPLACE_WITH_YOUR_API_KEY",
-  authDomain: "REPLACE_WITH_YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "REPLACE_WITH_YOUR_PROJECT_ID",
-  storageBucket: "REPLACE_WITH_YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "REPLACE_WITH_YOUR_SENDER_ID",
-  appId: "REPLACE_WITH_YOUR_APP_ID"
+  apiKey: "AIzaSyAjnv-CQOJ-Rw6WodpATpFmGXiiL9n16YU",
+  authDomain: "homieostasis-playground.firebaseapp.com",
+  projectId: "homieostasis-playground",
+  storageBucket: "homieostasis-playground.firebasestorage.app",
+  messagingSenderId: "1071789662705",
+  appId: "1:1071789662705:web:96726f8c508f8aa6f9e450"
 };
 
 const app = initializeApp(firebaseConfig);

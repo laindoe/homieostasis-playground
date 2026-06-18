@@ -1,0 +1,214 @@
+/* ── Google button ── */
+
+.google-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 16px;
+  background: #fff;
+  border: 2px solid #e5eef5;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  margin-bottom: 4px;
+}
+
+.google-btn:hover {
+  border-color: #72c8e8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Divider */
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: #ccc;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+
+
+.login-page {
+  margin: 0;
+  min-height: 100vh;
+  background: #eaf6ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Nunito', sans-serif;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 48px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-logo {
+  height: 52px;
+}
+
+.login-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 24px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.login-title {
+  font-size: 1.4rem;
+  color: #4a0080;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+/* Tab toggle */
+.login-tabs {
+  display: flex;
+  background: #f1f4f9;
+  border-radius: 50px;
+  padding: 4px;
+  margin-bottom: 22px;
+}
+
+.login-tab {
+  flex: 1;
+  padding: 9px 0;
+  border: none;
+  background: none;
+  border-radius: 50px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.login-tab.active {
+  background: #fff;
+  color: #d946a8;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Fields */
+.login-field {
+  margin-bottom: 14px;
+}
+
+.login-field label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #888;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.login-input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 2px solid #e5eef5;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  background: #fff;
+  color: #333;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+
+.login-input:focus {
+  border-color: #72c8e8;
+}
+
+/* Error / success message */
+.login-error {
+  min-height: 1.3em;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #e03d3d;
+  margin: 4px 0 10px;
+  text-align: center;
+}
+
+.login-success {
+  color: #2a8f6f;
+}
+
+/* Submit button */
+.login-btn {
+  width: 100%;
+  padding: 15px;
+  background: #d946a8;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+  margin-top: 4px;
+}
+
+.login-btn:hover {
+  background: #c0389a;
+}
+
+.login-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Forgot password */
+.login-forgot {
+  display: block;
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #bbb;
+  text-decoration: none;
+}
+
+.login-forgot:hover {
+  color: #72c8e8;
+}
+
+/* Footer tagline */
+.login-footer {
+  color: #aac4d8;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}

@@ -90,7 +90,8 @@
 
 .hub-topbar-stats {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 6px;
 }
 
 /* ── Stat boxes ── */

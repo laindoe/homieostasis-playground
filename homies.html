@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>homieOstasis · Bulletin Board</title>
-  <link rel="manifest" href="manifest.json" />
+  <title>homieOstasis · Homies</title>
+  <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#eaf6ff" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="homieOstasis" />
   <link rel="apple-touch-icon" href="/images/icon-192.png" />
-  <link rel="stylesheet" href="hub.css" />
+  <link rel="stylesheet" href="/hub.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" />
   <style>body { visibility: hidden; }</style>
 </head>
@@ -18,50 +18,62 @@
   <div class="hub-wrapper">
 
     <div class="hub-header">
-      <h1>Bulletin Board</h1>
+      <h1>Meet the Homies</h1>
       <span class="hub-points">⭐ 0 pts</span>
     </div>
 
     <div class="hub-card">
-      <h2>Welcome to homieOstasis!</h2>
-      <p>A playground for your inner child to explore, remember, and own who you are. Find Yourself. Find Your Homies.</p>
+      <h2>Your Healing Homies</h2>
+
+      <div class="hub-homie-row">
+        <img src="/images/holy-heart.svg" alt="Holy Heart" />
+        <div>
+          <strong>Holy Heart</strong>
+          <span>The playful pulse of the playground — joy, peace, and pure love.</span>
+        </div>
+      </div>
+
+      <div class="hub-homie-row">
+        <img src="/images/spotlight.svg" alt="Spotlight" />
+        <div>
+          <strong>Spotlight</strong>
+          <span>Your sassy little sis who knows the stars and helps your light shine brighter.</span>
+        </div>
+      </div>
+
+      <div class="hub-homie-row">
+        <img src="/images/baba-bloom.svg" alt="Baba Root & Bloom" />
+        <div>
+          <strong>Baba Root &amp; Bloom</strong>
+          <span>Your guides through the Garden of Freedom to find your true Self.</span>
+        </div>
+      </div>
     </div>
 
     <div class="hub-card">
-      <h2>Community Calendar</h2>
-      <p>Sound Bath with Baba Root, Art Jam in Destiny Land, Astro Chat with Spotlight — full schedule coming soon.</p>
-    </div>
-
-    <div class="hub-card">
-      <h2>Playground News</h2>
-      <p>New world coming soon: Cosmic Cove. New prizes added to the Prize Center. Season 2 starts next month.</p>
-    </div>
-
-    <div class="hub-card">
-      <h2>Playground Guide</h2>
-      <p>Explore, play, grow. Tap the Map tab to wander the grounds, or visit Homies to meet your guides.</p>
-      <a href="playground.html" class="hub-btn">View the Map</a>
+      <h2>More Homies Coming Soon</h2>
+      <p>New guides are on the way as more of the playground unlocks.</p>
     </div>
 
   </div>
 
   <nav class="hub-nav">
-    <a href="playground.html" class="hub-nav-item">
+    <a href="/map.html" class="hub-nav-item">
       <span class="hub-nav-icon">🗺️</span>
       <span>Map</span>
     </a>
-    <a href="prize-center.html" class="hub-nav-item">
+    <a href="/prizes.html" class="hub-nav-item">
       <span class="hub-nav-icon">🏆</span>
       <span>Prize Center</span>
     </a>
-    <a href="home.html" class="hub-nav-item hub-nav-center active">
+    <a href="/home.html" class="hub-nav-item hub-nav-center">
       <span class="hub-nav-icon">🌻</span>
     </a>
-    <a href="homies.html" class="hub-nav-item">
+    <a href="/homies.html" class="hub-nav-item active">
       <span class="hub-nav-icon">🤝</span>
       <span>Homies</span>
     </a>
-    <a href="profile.html" class="hub-nav-item">
+    <a href="/profile.html" class="hub-nav-item">
       <span class="hub-nav-icon">👤</span>
       <span>Profile</span>
     </a>
@@ -69,12 +81,12 @@
 
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
     }
   </script>
 
   <script type="module">
-    import { requireAuth } from './auth.js';
+    import { requireAuth } from '/auth.js';
     requireAuth().then(({ profile }) => {
       const el = document.querySelector('.hub-points');
       if (el) el.textContent = `⭐ ${profile.points ?? 0} pts`;

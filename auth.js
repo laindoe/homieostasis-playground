@@ -23,13 +23,12 @@ export function requireAuth() {
     const unsub = onAuthStateChanged(auth, async user => {
       unsub();
       if (!user) {
-        window.location.replace('login.html');
+        window.location.replace('/');
       } else {
         try {
           const profile = await ensureUserProfile(user);
           resolve({ user, profile });
         } catch (err) {
-          // Firestore unavailable — show the page with defaults so it doesn't blank out
           console.warn('Firestore profile error:', err);
           resolve({
             user,
@@ -46,7 +45,7 @@ export function requireAuth() {
 
 export function signOutAndRedirect() {
   return fbSignOut(auth).then(() => {
-    window.location.replace('login.html');
+    window.location.replace('/');
   });
 }
 

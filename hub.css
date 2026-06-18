@@ -77,8 +77,7 @@
 }
 
 .hub-logo,
-.hub-topbar .hub-points,
-.hub-topbar .hub-token {
+.stat-box {
   pointer-events: auto;
 }
 
@@ -92,6 +91,48 @@
 .hub-topbar-stats {
   display: flex;
   gap: 8px;
+}
+
+/* ── Stat boxes ── */
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff8ec;
+  border: 2px solid #d4a030;
+  border-radius: 14px;
+  padding: 6px 11px 6px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  min-width: 68px;
+}
+
+.stat-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.stat-number {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #3d1a7a;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.stat-label {
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: #9a6a10;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
 .hub-token {

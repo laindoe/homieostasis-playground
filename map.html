@@ -22,8 +22,20 @@
   <div class="hub-topbar">
     <img class="hub-logo" src="/images/homieostasis-logo.png" alt="homieOstasis" />
     <div class="hub-topbar-stats">
-      <span class="hub-points" id="topbar-points">⭐ 0 pts</span>
-      <span class="hub-token" id="topbar-tokens">🎫 0 tokens</span>
+      <div class="stat-box" id="topbar-tokens">
+        <span class="stat-icon">🎫</span>
+        <div class="stat-text">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Tokens</span>
+        </div>
+      </div>
+      <div class="stat-box" id="topbar-points">
+        <span class="stat-icon">⭐</span>
+        <div class="stat-text">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Points</span>
+        </div>
+      </div>
     </div>
   </div>
   <div id="playground">
@@ -325,7 +337,8 @@ Stay there as long as you can. </p>
   <script type="module">
     import { requireAuth } from '/auth.js';
     requireAuth().then(({ profile }) => {
-      document.getElementById('topbar-points').textContent = `⭐ ${profile.points ?? 0} pts`;
+      const pts = document.querySelector('#topbar-points .stat-number');
+      if (pts) pts.textContent = (profile.points ?? 0).toLocaleString();
       document.body.style.visibility = 'visible';
     });
   </script>

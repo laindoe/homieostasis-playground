@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>homieOstasis · Playground Map</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="homieOstasis" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/hub.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Nunito:wght@700;800&display=swap" />
+  <style>
+    #playground { padding-bottom: 90px; }
+    body { visibility: hidden; }
+  </style>
+</head>
+<body>
+  <div class="hub-topbar">
+    <img class="hub-logo" src="/images/homieostasis-logo.png" alt="homieOstasis" />
+    <div class="hub-topbar-stats">
+      <div class="stat-box" id="topbar-points">
+        <span class="stat-icon">⭐</span>
+        <div class="stat-text">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Points</span>
+        </div>
+      </div>
+      <div class="stat-box" id="topbar-tokens">
+        <span class="stat-icon">🎫</span>
+        <div class="stat-text">
+          <span class="stat-number">0</span>
+          <span class="stat-label">Tokens</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="playground">
+    <img id="bg-image" src="/images/energy_playground-bg.svg" alt="Energy Playground" />
+    <img id="treehouse" src="/images/only-homies-treehouse.svg" alt="Only Homies Treehouse" onclick="window.location.href='/treehouse.html'" />
+    <img id="brain-bath" src="/images/brain-bath.svg" alt="Brain Bath" onclick="window.location.href='/brain-bath.html'" />
+    <img id="imagination-box" src="/images/imagination-box.svg" alt="Imagination Box" onclick="window.location.href='/imagination-box.html'" />
+    <img id="sound-bowls" src="/images/sound-bowls.svg" alt="Sound Bowls" onclick="window.location.href='/sound-bowls.html'" />
+    <img id="store" src="/images/store.svg" alt="Store" onclick="window.location.href='/store.html'" />
+    <img id="swing" src="/images/swing.svg" alt="Swing" onclick="window.location.href='/swing.html'" />
+    <img id="garden-of-freedom" src="/images/garden-of-freedom-rainbow.svg" alt="Garden of Freedom" onclick="window.location.href='/garden.html'" />
+    <img id="baba-bloom" src="/images/baba-bloom.svg" alt="Baba Bloom" onclick="window.location.href='/baba-bloom.html'" />
+    <img id="slide" src="/images/slide.svg" alt="Slide" onclick="window.location.href='/slide.html'" />
+    <img id="holy-heart" src="/images/holy-heart.svg" alt="Holy Heart" onclick="window.location.href='/holy-heart.html'" />
+    <img id="heart-wheel" src="/images/heart-wheel.svg" alt="Heart Wheel" onclick="window.location.href='/heart-wheel.html'" />
+    <img id="sacred-sandbox" src="/images/sacred-sandbox.svg" alt="Sacred Sandbox" onclick="window.location.href='/sacred-sandbox.html'" />
+    <img id="blanket" src="/images/blanket.svg" alt="Blanket" onclick="window.location.href='/mystic-mat.html'" />
+    <img id="spotlight" src="/images/spotlight.svg" alt="Spotlight" onclick="window.location.href='/spotlight.html'" />
+    <img id="bulletin-board" src="/images/bullentin-board.svg" alt="Bulletin Board" onclick="window.location.href='/bulletin.html'" />
+    <img id="rug" src="/images/rug.svg" alt="Rug" onclick="window.location.href='/slow-down.html'" />
+  </div>
+
+  <nav class="hub-nav">
+    <a href="/map.html" class="hub-nav-item active">
+      <span class="hub-nav-icon">🗺️</span>
+      <span>Map</span>
+    </a>
+    <a href="/prizes.html" class="hub-nav-item">
+      <span class="hub-nav-icon">🏆</span>
+      <span>Prize Center</span>
+    </a>
+    <a href="/home.html" class="hub-nav-item hub-nav-center">
+      <span class="hub-nav-icon">🌻</span>
+    </a>
+    <a href="/homies.html" class="hub-nav-item">
+      <span class="hub-nav-icon">🤝</span>
+      <span>Homies</span>
+    </a>
+    <a href="/profile.html" class="hub-nav-item">
+      <span class="hub-nav-icon">👤</span>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+    }
+  </script>
+
+  <script type="module">
+    import { requireAuth } from '/auth.js';
+    requireAuth().then(({ profile }) => {
+      const pts = document.querySelector('#topbar-points .stat-number');
+      if (pts) pts.textContent = (profile.points ?? 0).toLocaleString();
+      document.body.style.visibility = 'visible';
+    });
+  </script>
+</body>
+</html>

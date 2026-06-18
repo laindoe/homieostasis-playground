@@ -1,0 +1,269 @@
+/* ── Bottom nav (shared across Map, Prize Center, Home, Homies, Profile) ── */
+
+.hub-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff8ec;
+  border-top: 2px solid #f0dfc0;
+  padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+  z-index: 50;
+  font-family: 'Nunito', sans-serif;
+}
+
+.hub-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  text-decoration: none;
+  color: #999;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.hub-nav-item.active {
+  color: #d946a8;
+}
+
+.hub-nav-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.hub-nav-center {
+  position: relative;
+  top: -16px;
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ffd83d;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hub-nav-center .hub-nav-icon {
+  font-size: 26px;
+}
+
+.hub-nav-center.active {
+  box-shadow: 0 0 0 3px #d946a8, 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Top stat bar (Playground Map) ── */
+
+.hub-topbar {
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 0 14px;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.hub-logo,
+.stat-box {
+  pointer-events: auto;
+}
+
+.hub-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 32px;
+}
+
+.hub-topbar-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── Stat boxes ── */
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff8ec;
+  border: 2px solid #d4a030;
+  border-radius: 14px;
+  padding: 6px 11px 6px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  min-width: 68px;
+}
+
+.stat-icon {
+  font-size: 22px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stat-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.stat-number {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #3d1a7a;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.stat-label {
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: #9a6a10;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.hub-token {
+  background: #fff;
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #2a8f6f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+
+/* ── Hub page layout (Prize Center, Home, Homies, Profile) ── */
+
+body.hub-page {
+  margin: 0;
+  min-height: 100vh;
+  background: #eaf6ff;
+  display: flex;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+}
+
+.hub-wrapper {
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  padding: 24px 16px 110px;
+  position: relative;
+}
+
+.hub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.hub-header h1 {
+  font-size: 1.4rem;
+  color: #4a0080;
+}
+
+.hub-points {
+  background: #fff;
+  border-radius: 50px;
+  padding: 6px 14px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #d946a8;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+}
+
+.hub-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.hub-card h2 {
+  font-size: 1.05rem;
+  color: #4a0080;
+  margin-bottom: 8px;
+}
+
+.hub-card p {
+  color: #555;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.hub-card-row {
+  display: flex;
+  gap: 12px;
+}
+
+.hub-card-row .hub-card {
+  flex: 1;
+}
+
+.hub-btn {
+  display: inline-block;
+  background: #d946a8;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+.hub-homie-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.hub-homie-row:last-child {
+  border-bottom: none;
+}
+
+.hub-homie-row img {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.hub-homie-row strong {
+  display: block;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.hub-homie-row span {
+  color: #777;
+  font-size: 0.82rem;
+}
+
+.hub-back {
+  color: #4a0080;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-right: 8px;
+  line-height: 1;
+}

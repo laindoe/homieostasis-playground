@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>homieOstasis · Heart Wheel</title>
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#eaf6ff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="homieOstasis" />
+  <link rel="apple-touch-icon" href="/images/icon-192.png" />
+  <link rel="stylesheet" href="/hub.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" />
+  <style>body { visibility: hidden; }</style>
+</head>
+<body class="hub-page">
+  <div class="hub-wrapper">
+    <div class="hub-header">
+      <h1><a href="/map.html" class="hub-back">←</a> Heart Wheel</h1>
+      <span class="hub-points">⭐ 0 pts</span>
+    </div>
+    <div class="hub-card">
+      <h2>Spin the Wheel</h2>
+      <p>The Heart Wheel is a channeled oracle + tarot reading based on the sacred medicine wheel that brings clarity to your current energy, inner desires, and next aligned steps.</p>
+    </div>
+    <div class="hub-card">
+      <h2>Get Your Reading</h2>
+      <a href="https://homieostasis.myshopify.com/products/heart-wheel" target="_blank" class="hub-btn">Spin the Heart Wheel</a>
+    </div>
+  </div>
+  <nav class="hub-nav">
+    <a href="/map.html" class="hub-nav-item active"><span class="hub-nav-icon">🗺️</span><span>Map</span></a>
+    <a href="/prizes.html" class="hub-nav-item"><span class="hub-nav-icon">🏆</span><span>Prize Center</span></a>
+    <a href="/home.html" class="hub-nav-item hub-nav-center"><span class="hub-nav-icon">🌻</span></a>
+    <a href="/homies.html" class="hub-nav-item"><span class="hub-nav-icon">🤝</span><span>Homies</span></a>
+    <a href="/profile.html" class="hub-nav-item"><span class="hub-nav-icon">👤</span><span>Profile</span></a>
+  </nav>
+  <script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js')); }</script>
+  <script type="module">
+    import { requireAuth } from '/auth.js';
+    requireAuth().then(({ profile }) => {
+      const el = document.querySelector('.hub-points');
+      if (el) el.textContent = `⭐ ${profile.points ?? 0} pts`;
+      document.body.style.visibility = 'visible';
+    });
+  </script>
+</body>
+</html>

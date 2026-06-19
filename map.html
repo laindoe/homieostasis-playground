@@ -96,10 +96,14 @@
   </script>
 
   <script type="module">
+    // Safety net: always show body within 6s regardless of auth state
+    setTimeout(() => { document.body.style.visibility = 'visible'; }, 6000);
     import { requireAuth } from '/auth.js';
     requireAuth().then(({ profile }) => {
       const pts = document.querySelector('#topbar-points .stat-number');
       if (pts) pts.textContent = (profile.points ?? 0).toLocaleString();
+      document.body.style.visibility = 'visible';
+    }).catch(() => {
       document.body.style.visibility = 'visible';
     });
   </script>

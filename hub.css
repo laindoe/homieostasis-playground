@@ -69,29 +69,61 @@
   max-width: 480px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
+  justify-content: space-between;
   padding: 0 14px;
   z-index: 60;
   pointer-events: none;
 }
 
 .hub-logo,
-.stat-box {
+.stat-box,
+.topbar-btn {
   pointer-events: auto;
 }
 
-.hub-logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 32px;
-}
 
 .hub-topbar-stats {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+/* ── Topbar left-side action buttons ── */
+
+.hub-topbar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.topbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff8ec;
+  border: 2px solid #d4a030;
+  border-radius: 14px;
+  padding: 6px 10px 6px 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  text-decoration: none;
+  min-width: 68px;
+}
+
+.topbar-btn-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.topbar-btn-label {
+  font-size: 0.5rem;
+  font-weight: 800;
+  color: #3d1a7a;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 /* ── Stat boxes ── */

@@ -163,9 +163,12 @@
 .stat-label {
   font-size: 0.5rem;
   font-weight: 800;
-  color: #9a6a10;
+  color: #3d1a7a;
   text-transform: uppercase;
   letter-spacing: 0.07em;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .hub-token {

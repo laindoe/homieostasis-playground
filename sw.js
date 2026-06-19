@@ -1,4 +1,4 @@
-const CACHE = 'homieostasis-v20';
+const CACHE = 'homieostasis-v21';
 
 const CORE = [
   '/',
@@ -52,7 +52,8 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    )
+    ).then(() => self.clients.matchAll({ type: 'window' }))
+      .then(clients => clients.forEach(client => client.navigate(client.url)))
   );
   self.clients.claim();
 });

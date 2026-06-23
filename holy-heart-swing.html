@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Holy Heart Swing · homieOstasis</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#F5C518">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="homieOstasis">
+  <link rel="apple-touch-icon" href="/images/icon-192.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap">
+  <style>
+    /* ══════════════════════════════════════════
+       BASE
+    ══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #F5C518;
+      overflow: hidden;
+      position: fixed;
+      inset: 0;
+      visibility: hidden; /* revealed after auth */
+    }
+
+    /* ══════════════════════════════════════════
+       LAYOUT SHELL
+    ══════════════════════════════════════════ */
+    #game-wrap {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════════════
+       HUD (top bar)
+    ══════════════════════════════════════════ */
+    #hud {
+      flex: 0 0 auto;
+      background: #F5C518;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: calc(env(safe-area-inset-top, 8px) + 10px) 18px 10px;
+      gap: 10px;
+    }
+
+    .hud-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 60px;
+    }
+
+    .hud-label {
+      font-size: 0.6rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .hud-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .hud-value.urgent { color: #FF4444; }
+
+    .exit-btn {
+      background: rgba(255,255,255,0.28);
+      border: 2px solid rgba(255,255,255,0.55);
+      border-radius: 50px;
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 900;
+      padding: 7px 18px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════
+       DIFFICULTY BAR
+    ══════════════════════════════════════════ */
+    #diff-bar {
+      flex: 0 0 auto;
+      background: #F5C518;
+      display: flex;
+      gap: 8px;
+      padding: 4px 14px 10px;
+    }
+
+    .diff-btn {
+      flex: 1;
+      padding: 8px 4px;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-radius: 50px;
+      background: transparent;
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .diff-btn.active {
+      background: #3DBDA3;
+      border-color: #3DBDA3;
+      color: #fff;
+    }
+
+    /* ══════════════════════════════════════════
+       GAME AREA
+       TODO: Replace background gradient with:
+         background: url('/assets/games/holy-heart-swing/background-placeholder.png') center/cover no-repeat;
+    ══════════════════════════════════════════ */
+    #game-area {
+      flex: 1 1 0;
+      position: relative;
+      overflow: hidden;
+      /* Sky → grass gradient placeholder */
+      background: linear-gradient(180deg, #87CEEB 0%, #A8DFF0 55%, #6BBF4E 55%, #5AAD3C 100%);
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
+    }
+
+    /* Grass strip decorative bar */
+    #grass-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 28%;
+      /* Already shown via background gradient above */
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════════════════
+       SVG SWING ELEMENTS
+       TODO: Replace A-frame with swing-placeholder.png
+             and Holy Heart with holy-heart-placeholder.png
+    ══════════════════════════════════════════ */
+    #swing-svg {
+      position: absolute;
+      inset: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .a-post {
+      stroke: #6B2460;
+      stroke-width: 28;
+      stroke-linecap: round;
+    }
+
+    .a-cap {
+      stroke: #7D3073;
+      stroke-width: 12;
+      stroke-linecap: round;
+    }
+
+    .chain {
+      stroke: #7B4B2A;
+      stroke-width: 7;
+      stroke-linecap: round;
+    }
+
+    .seat {
+      fill: #8B5A2B;
+    }
+
+    /* ══════════════════════════════════════════
+       HOLY HEART CHARACTER
+       TODO: Replace emoji with:
+         <img src="/assets/games/holy-heart-swing/holy-heart-placeholder.png" width="52" height="52">
+         or use background-image on this div
+    ══════════════════════════════════════════ */
+    #holy-heart {
+      position: absolute;
+      font-size: 52px;
+      line-height: 1;
+      pointer-events: none;
+      /* centers the emoji on its computed position */
+      transform: translate(-50%, -100%);
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+      z-index: 4;
+    }
+
+    /* ══════════════════════════════════════════
+       GOLDEN TARGET OVAL
+    ══════════════════════════════════════════ */
+    #target-oval {
+      position: absolute;
+      border-radius: 50%;
+      border: 3px dashed #FFD700;
+      background: rgba(255, 215, 0, 0.22);
+      box-shadow: 0 0 18px 6px rgba(255,215,0,0.35);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #tap-zone-label {
+      position: absolute;
+      transform: translateX(-50%);
+      font-size: 0.6rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      color: rgba(180, 130, 0, 0.85);
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* ══════════════════════════════════════════
+       SCORE POPUPS
+    ══════════════════════════════════════════ */
+    .score-popup {
+      position: absolute;
+      font-size: 1.6rem;
+      font-weight: 900;
+      pointer-events: none;
+      animation: floatUp 0.85s ease-out forwards;
+      z-index: 15;
+      transform: translate(-50%, -50%);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .pop-positive { color: #00C853; }
+    .pop-negative { color: #E53935; }
+
+    @keyframes floatUp {
+      0%   { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+      70%  { opacity: 0.85; }
+      100% { opacity: 0; transform: translate(-50%, calc(-50% - 70px)) scale(0.7); }
+    }
+
+    /* ══════════════════════════════════════════
+       OVERLAY CARDS (start + results)
+    ══════════════════════════════════════════ */
+    .overlay {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.28);
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+      padding: 20px;
+    }
+
+    .overlay.active { display: flex; }
+
+    .overlay-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 28px 24px 26px;
+      width: 100%;
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    /* ─── Start overlay ─── */
+    .game-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #E84545;
+      line-height: 1.1;
+    }
+
+    .game-instructions {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.5;
+      max-width: 240px;
+    }
+
+    .rules {
+      background: #f9f9f9;
+      border-radius: 14px;
+      padding: 12px 18px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .rules p {
+      font-size: 0.92rem;
+      color: #444;
+    }
+
+    .rules strong { color: #333; }
+
+    /* ─── Results overlay ─── */
+    .trophy-icon {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .results-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #E84545;
+      line-height: 1.1;
+    }
+
+    .results-sub {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .score-card {
+      width: 100%;
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .score-card-label {
+      font-size: 0.65rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: inherit;
+    }
+
+    .score-card-val {
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .pink-card { background: #FDECEA; color: #C62828; }
+    .pink-card .score-card-val { color: #E53935; }
+
+    .green-card { background: #E8F5E9; color: #2E7D32; }
+    .green-card .score-card-val { color: #3DBDA3; }
+
+    /* ─── Shared button ─── */
+    .teal-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 50px;
+      background: #3DBDA3;
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(61,189,163,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="game-wrap">
+
+  <!-- ═══ HUD ═══ -->
+  <div id="hud">
+    <div class="hud-stat">
+      <span class="hud-label">Score</span>
+      <span class="hud-value" id="hud-score">0</span>
+    </div>
+    <div class="hud-stat">
+      <span class="hud-label">Time</span>
+      <span class="hud-value" id="hud-timer">60</span>
+    </div>
+    <a href="/swing.html" class="exit-btn">Exit</a>
+  </div>
+
+  <!-- ═══ DIFFICULTY BAR ═══ -->
+  <div id="diff-bar">
+    <button class="diff-btn" data-diff="easy">🐢 Beginner</button>
+    <button class="diff-btn active" data-diff="medium">🎮 Medium</button>
+    <button class="diff-btn" data-diff="hard">⚡ Expert</button>
+  </div>
+
+  <!-- ═══ GAME AREA ═══ -->
+  <div id="game-area">
+
+    <!-- SVG: A-frame structure + dynamic chains + seat
+         TODO: Replace A-frame posts with /assets/games/holy-heart-swing/swing-placeholder.png
+    -->
+    <svg id="swing-svg">
+      <!-- Fixed A-frame posts -->
+      <line id="post-left"  class="a-post"/>
+      <line id="post-right" class="a-post"/>
+      <!-- Cap bar at top of pivot -->
+      <line id="post-cap"   class="a-cap"/>
+      <!-- Dynamic chains (updated each frame) -->
+      <line id="chain-left"  class="chain"/>
+      <line id="chain-right" class="chain"/>
+      <!-- Dynamic seat plank (updated each frame) -->
+      <rect id="seat-rect"  class="seat" rx="6"/>
+    </svg>
+
+    <!-- Holy Heart character
+         TODO: Replace with /assets/games/holy-heart-swing/holy-heart-placeholder.png
+         When final asset is ready, swap the emoji for:
+           <img src="/assets/games/holy-heart-swing/holy-heart-placeholder.png"
+                style="width:56px;height:56px;object-fit:contain;">
+    -->
+    <div id="holy-heart">❤️</div>
+
+    <!-- Golden target zone — fixed at pendulum rest position -->
+    <div id="target-oval"></div>
+    <div id="tap-zone-label">TAP ZONE</div>
+
+    <!-- ── START OVERLAY ── -->
+    <div class="overlay active" id="overlay-start">
+      <div class="overlay-card">
+        <h1 class="game-title">Holy Heart<br>Swing!</h1>
+        <p class="game-instructions">Tap when Holy Heart swings through the <strong>golden zone</strong>!</p>
+        <div class="rules">
+          <p>🎯 Perfect timing = <strong>+10 pts</strong></p>
+          <p>❌ Too early/late = <strong>−5 pts</strong></p>
+        </div>
+        <button class="teal-btn" id="start-btn">▶ &nbsp;Start!</button>
+      </div>
+    </div>
+
+    <!-- ── RESULTS OVERLAY ── -->
+    <div class="overlay" id="overlay-results">
+      <div class="overlay-card">
+        <div class="trophy-icon">🏆</div>
+        <h2 class="results-title">Time's Up! 🎉</h2>
+        <p class="results-sub">Round complete!</p>
+        <div class="score-card pink-card">
+          <span class="score-card-label">Your Score</span>
+          <span class="score-card-val" id="results-score">0</span>
+        </div>
+        <div class="score-card green-card">
+          <span class="score-card-label">🏆 Best Score</span>
+          <span class="score-card-val" id="results-best">0</span>
+        </div>
+        <!-- TODO: Connect to Playground Points: award(score, 'holy-heart-swing') before showing this -->
+        <button class="teal-btn" id="play-again-btn">🔄 &nbsp;Play Again</button>
+      </div>
+    </div>
+
+  </div><!-- /#game-area -->
+</div><!-- /#game-wrap -->
+
+
+<script>
+'use strict';
+
+/* ═══════════════════════════════════════════════
+   DIFFICULTY CONFIG
+   speed:    swing radians per second
+   maxAngle: peak rotation in degrees
+   hitZone:  |sin| must be ≤ this for a hit (higher = easier)
+   ovalW:    golden oval width in px
+═══════════════════════════════════════════════ */
+const DIFFS = {
+  easy:   { speed: 1.0, maxAngle: 34, hitZone: 0.36, ovalW: 130 },
+  medium: { speed: 2.0, maxAngle: 34, hitZone: 0.20, ovalW: 76  },
+  hard:   { speed: 3.4, maxAngle: 34, hitZone: 0.09, ovalW: 36  }
+};
+
+/* ═══════════════════════════════════════════════
+   GAME STATE
+═══════════════════════════════════════════════ */
+let diff        = 'medium';
+let gameActive  = false;
+let score       = 0;
+let timeLeft    = 60;
+let rafId       = null;
+let timerInt    = null;
+let swingStart  = null;  // timestamp when swing animation started
+let currentSin  = 0;     // real-time sin value for hit detection
+
+/* ═══════════════════════════════════════════════
+   DOM REFS
+═══════════════════════════════════════════════ */
+const gameArea   = document.getElementById('game-area');
+const svgEl      = document.getElementById('swing-svg');
+const postLeft   = document.getElementById('post-left');
+const postRight  = document.getElementById('post-right');
+const postCap    = document.getElementById('post-cap');
+const chainLeft  = document.getElementById('chain-left');
+const chainRight = document.getElementById('chain-right');
+const seatRect   = document.getElementById('seat-rect');
+const holyHeart  = document.getElementById('holy-heart');
+const targetOval = document.getElementById('target-oval');
+const tapLabel   = document.getElementById('tap-zone-label');
+const hudScore   = document.getElementById('hud-score');
+const hudTimer   = document.getElementById('hud-timer');
+
+/* ═══════════════════════════════════════════════
+   GEOMETRY — computed on resize
+═══════════════════════════════════════════════ */
+const PIVOT_X_RATIO  = 0.50;  // pivot: horizontal center
+const PIVOT_Y_RATIO  = 0.04;  // pivot: 4% from top of game area
+const SEAT_W         = 86;    // seat plank width (px)
+const SEAT_H         = 12;    // seat plank height (px)
+const CHAR_H         = 56;    // holy heart character height (px)
+const OVAL_H         = 64;    // target oval height (px)
+
+let pivotX = 0, pivotY = 0, chainLen = 0;
+let ovalCX = 0, ovalCY = 0;  // oval center in px
+
+function computeGeometry() {
+  const r = gameArea.getBoundingClientRect();
+  const W = r.width, H = r.height;
+
+  pivotX = W * PIVOT_X_RATIO;
+  pivotY = H * PIVOT_Y_RATIO;
+
+  // Chain length: fit inside screen without clipping at max swing
+  const maxAngleRad = DIFFS[diff].maxAngle * Math.PI / 180;
+  const maxHoriz    = W * 0.42; // character stays within 42% from center
+  const byWidth     = maxHoriz / Math.sin(maxAngleRad);
+  const byHeight    = H * 0.50;
+  chainLen = Math.min(byWidth, byHeight);
+
+  // ── A-frame posts ──
+  const postBaseY = H * 0.95;
+  postLeft.setAttribute('x1', pivotX);       postLeft.setAttribute('y1', pivotY);
+  postLeft.setAttribute('x2', W * 0.03);     postLeft.setAttribute('y2', postBaseY);
+
+  postRight.setAttribute('x1', pivotX);      postRight.setAttribute('y1', pivotY);
+  postRight.setAttribute('x2', W * 0.97);   postRight.setAttribute('y2', postBaseY);
+
+  // Short cap bar at apex
+  postCap.setAttribute('x1', pivotX - 22);  postCap.setAttribute('y1', pivotY);
+  postCap.setAttribute('x2', pivotX + 22);  postCap.setAttribute('y2', pivotY);
+
+  // ── Golden oval at rest position (angle = 0) ──
+  ovalCX = pivotX;
+  ovalCY = pivotY + chainLen + SEAT_H / 2;
+
+  const ow = DIFFS[diff].ovalW;
+  targetOval.style.left   = ovalCX + 'px';
+  targetOval.style.top    = ovalCY + 'px';
+  targetOval.style.width  = ow + 'px';
+  targetOval.style.height = OVAL_H + 'px';
+
+  tapLabel.style.left = ovalCX + 'px';
+  tapLabel.style.top  = (ovalCY + OVAL_H / 2 + 6) + 'px';
+}
+
+window.addEventListener('resize', computeGeometry);
+
+/* ═══════════════════════════════════════════════
+   SWING ANIMATION LOOP
+   Runs continuously regardless of game state.
+   Pendulum: angle = maxAngle * sin(t * speed)
+═══════════════════════════════════════════════ */
+function swingLoop(ts) {
+  if (!swingStart) swingStart = ts;
+  const t = (ts - swingStart) / 1000;
+  const cfg = DIFFS[diff];
+  const maxRad = cfg.maxAngle * Math.PI / 180;
+
+  currentSin = Math.sin(t * cfg.speed);
+  const angle = maxRad * currentSin;
+
+  // Seat center in px
+  const sx = pivotX + Math.sin(angle) * chainLen;
+  const sy = pivotY + Math.cos(angle) * chainLen;
+
+  // Chains: pivot → each end of seat plank
+  const hw = SEAT_W / 2;
+  chainLeft.setAttribute('x1', pivotX); chainLeft.setAttribute('y1', pivotY);
+  chainLeft.setAttribute('x2', sx - hw); chainLeft.setAttribute('y2', sy);
+
+  chainRight.setAttribute('x1', pivotX); chainRight.setAttribute('y1', pivotY);
+  chainRight.setAttribute('x2', sx + hw); chainRight.setAttribute('y2', sy);
+
+  // Seat plank
+  seatRect.setAttribute('x', sx - hw);
+  seatRect.setAttribute('y', sy);
+  seatRect.setAttribute('width', SEAT_W);
+  seatRect.setAttribute('height', SEAT_H);
+
+  // Holy Heart character (above and centered on seat)
+  // TODO: When swapping to PNG asset, adjust these offsets for the image size
+  holyHeart.style.left = sx + 'px';
+  holyHeart.style.top  = (sy - 2) + 'px';  // emoji sits on/above seat
+
+  rafId = requestAnimationFrame(swingLoop);
+}
+
+/* ═══════════════════════════════════════════════
+   GAME FLOW
+═══════════════════════════════════════════════ */
+function startGame() {
+  score = 0;
+  timeLeft = 60;
+  swingStart = null;  // swing resets timing from now
+  currentSin = 0;
+  hudScore.textContent = '0';
+  hudTimer.textContent = '60';
+  hudTimer.classList.remove('urgent');
+
+  hideOverlay('overlay-start');
+  hideOverlay('overlay-results');
+
+  gameActive = true;
+
+  timerInt = setInterval(() => {
+    timeLeft--;
+    hudTimer.textContent = timeLeft;
+    if (timeLeft <= 10) hudTimer.classList.add('urgent');
+    if (timeLeft <= 0) endGame();
+  }, 1000);
+}
+
+function endGame() {
+  gameActive = false;
+  clearInterval(timerInt);
+  timerInt = null;
+
+  // Best score via localStorage
+  // TODO: Also submit score to Playground Points here
+  //   if (typeof HomiePoints !== 'undefined') HomiePoints.award(score, 'holy-heart-swing');
+  const prev = parseInt(localStorage.getItem('hhs-best') || '0', 10);
+  const best = Math.max(score, prev);
+  localStorage.setItem('hhs-best', best);
+
+  document.getElementById('results-score').textContent = score;
+  document.getElementById('results-best').textContent  = best;
+
+  showOverlay('overlay-results');
+}
+
+/* ═══════════════════════════════════════════════
+   TAP HANDLING
+   Taps anywhere on game area during gameplay.
+   Checks whether Holy Heart is in the golden zone.
+═══════════════════════════════════════════════ */
+let touchFired = false;
+
+function handleTap(e) {
+  // Prevent click from double-firing after touchstart on mobile
+  if (e.type === 'touchstart') { touchFired = true; }
+  else if (e.type === 'click'  && touchFired) { touchFired = false; return; }
+
+  if (!gameActive) return;
+
+  // Ignore taps on buttons / overlay cards
+  if (e.target.closest('.overlay-card, button, a')) return;
+
+  const isHit = Math.abs(currentSin) <= DIFFS[diff].hitZone;
+
+  if (isHit) {
+    score += 10;
+    spawnPopup('+10', true, e);
+    // TODO: Play positive chime/bell sound here
+  } else {
+    score = Math.max(0, score - 5);
+    spawnPopup('−5', false, e);
+    // TODO: Play soft miss sound here
+  }
+
+  hudScore.textContent = score;
+}
+
+/* ═══════════════════════════════════════════════
+   SCORE POPUP
+═══════════════════════════════════════════════ */
+function spawnPopup(text, isHit, e) {
+  const rect = gameArea.getBoundingClientRect();
+  const touch = e.touches?.[0] ?? e.changedTouches?.[0];
+  const cx = touch ? touch.clientX - rect.left : rect.width / 2;
+  const cy = touch ? touch.clientY - rect.top  : rect.height * 0.4;
+
+  const el = document.createElement('div');
+  el.className = 'score-popup ' + (isHit ? 'pop-positive' : 'pop-negative');
+  el.textContent = text;
+  el.style.left = cx + 'px';
+  el.style.top  = cy + 'px';
+  gameArea.appendChild(el);
+  setTimeout(() => el.remove(), 900);
+}
+
+/* ═══════════════════════════════════════════════
+   OVERLAY HELPERS
+═══════════════════════════════════════════════ */
+function showOverlay(id) { document.getElementById(id).classList.add('active'); }
+function hideOverlay(id) { document.getElementById(id).classList.remove('active'); }
+
+/* ═══════════════════════════════════════════════
+   DIFFICULTY BUTTONS
+═══════════════════════════════════════════════ */
+document.querySelectorAll('.diff-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    diff = btn.dataset.diff;
+    document.querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    swingStart = null;  // restart swing timing so it starts smoothly
+    computeGeometry();  // re-size target oval for new difficulty
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   BUTTON LISTENERS
+═══════════════════════════════════════════════ */
+document.getElementById('start-btn').addEventListener('click', startGame);
+
+document.getElementById('play-again-btn').addEventListener('click', () => {
+  hideOverlay('overlay-results');
+  showOverlay('overlay-start');
+});
+
+/* ═══════════════════════════════════════════════
+   GAME AREA TAP DETECTION
+═══════════════════════════════════════════════ */
+gameArea.addEventListener('touchstart', handleTap, { passive: true });
+gameArea.addEventListener('click', handleTap);
+
+/* ═══════════════════════════════════════════════
+   INIT — compute layout, then start idle swing
+═══════════════════════════════════════════════ */
+computeGeometry();
+rafId = requestAnimationFrame(swingLoop);
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+}
+</script>
+
+<script type="module">
+/* Auth guard — game does not yet submit to Playground Points (see TODO above) */
+setTimeout(() => { document.body.style.visibility = 'visible'; }, 4000);
+try {
+  const { requireAuth } = await import('/auth.js');
+  await requireAuth();
+  document.body.style.visibility = 'visible';
+} catch {
+  document.body.style.visibility = 'visible';
+}
+</script>
+
+</body>
+</html>

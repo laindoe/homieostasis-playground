@@ -1,4 +1,4 @@
-const CACHE = 'homieostasis-v22';
+const CACHE = 'homieostasis-v23';
 
 const CORE = [
   '/',
@@ -29,6 +29,7 @@ const CORE = [
   '/spotlight.html',
   '/bulletin.html',
   '/slow-down.html',
+  '/holy-heart-swing.html',
   '/images/playground-entrance.png',
   '/images/homieostasis-logo.png',
   '/images/energy_playground-bg.svg',
